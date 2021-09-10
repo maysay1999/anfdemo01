@@ -12,4 +12,8 @@ az aks create \
     --enable-managed-identity
 
 #2)
+RG={your_resourcce_group}
 az aks get-credentials -n AnfCluster01 -g $RG
+
+kubectl get node -o wide
+kubectl get po -o wide
