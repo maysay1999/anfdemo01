@@ -1,0 +1,26 @@
+# create a pool named 
+MCRG={your_resource_group}
+az netappfiles pool create \
+    --resource-group $MCRG \
+    --location japaneast \
+    --account-name anfac01 \
+    --pool-name mypool1 \
+    --size 4 \
+    --service-level Standard
+
+MCRG={your_resource_group}
+MCVNET={your_resource_group}
+az netappfiles volume create \
+    --resource-group $MCRG \
+    --location australiaeast \
+    --account-name anfac01 \
+    --pool-name mypool1 \
+    --name myvol1 \
+    --service-level Standard \
+    --vnet $MCVNET \
+    --subnet netapp-subnet \
+    --usage-threshold 100 \
+    --file-path nfspath01 \
+    --protocol-types "NFSv3"
+
+
