@@ -1,3 +1,6 @@
+#curl
+curl -O https://github.com/maysay1999/anfdemo01/blob/main/anf-k8s_useful_basic_commands.txt
+
 # Details of NODE
 kubectl get node -o wide
 kubectl describe node

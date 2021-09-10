@@ -7,6 +7,7 @@ RG={your_resourcce_group}
 az aks create \
     -g $RG \
     -n AnfCluster01 \
+    -l japaneast \
     --node-count 1 \
     --generate-ssh-keys \
     --node-vm-size Standard_B2s \
