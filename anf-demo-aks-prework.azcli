@@ -1,0 +1,15 @@
+#1)
+az create group -n anftest-rg -l japaneast
+
+RG={your_resourcce_group}
+
+az aks create \
+    -g $RG \
+    -n AnfCluster01 \
+    --node-count 1 \
+    --generate-ssh-keys \
+    --node-vm-size Standard_B2s \
+    --enable-managed-identity
+
+#2)
+az aks get-credentials -n AnfCluster01 -g $RG
