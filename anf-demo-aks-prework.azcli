@@ -1,4 +1,5 @@
 #1)
+az provider register --namespace Microsoft.NetApp --wait
 az create group -n anftest-rg -l japaneast
 
 RG={your_resourcce_group}

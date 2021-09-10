@@ -24,3 +24,8 @@ az netappfiles volume create \
     --protocol-types "NFSv3"
 
 
+az netappfiles volume show \
+    --resource-group $MCRG \
+    --account-name anfac01 \
+    --pool-name mypool1 \
+    --volume-name myvol1
