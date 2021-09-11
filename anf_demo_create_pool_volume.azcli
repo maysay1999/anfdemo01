@@ -1,4 +1,4 @@
-# create a pool named 
+# create a pool
 MCRG={your_resource_group}
 az netappfiles pool create \
     --resource-group $MCRG \
@@ -8,6 +8,7 @@ az netappfiles pool create \
     --size 4 \
     --service-level Standard
 
+# create a volume
 MCRG={your_resource_group}
 MCVNET={your_resource_group}
 az netappfiles volume create \
@@ -23,7 +24,7 @@ az netappfiles volume create \
     --file-path nfspath01 \
     --protocol-types "NFSv3"
 
-
+# View the created volume
 az netappfiles volume show \
     --resource-group $MCRG \
     --account-name anfac01 \
