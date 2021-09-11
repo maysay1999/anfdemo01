@@ -1,0 +1,28 @@
+### Add helm repo of Helm Chart
+helm repo add bitnami https://charts.bitnami.com/bitnami
+
+### Install WordPress
+helm install astraakswp \
+  --set wordpressUsername=wpadmin \
+  --set wordpressPassword=SXCN2bj3TNcA \
+  --set mariadb.auth.rootPassword=1xg2KnICsM1t \
+    bitnami/wordpress
+or 
+helm install astraakswp bitnami/wordpress
+
+### Uninstall 
+helm delete astraakswp
+
+### Pls refer to this manual site
+https://helm.sh/docs/helm/helm_install/
+https://github.com/bitnami/charts/tree/master/bitnami/wordpress
+
+## other useful commands (you can try these)
+helm version
+helm repo update
+helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx
+helm uninstall astraakswp
+helm get all
+kubectl get svc
+helm search repo wordpress
+
