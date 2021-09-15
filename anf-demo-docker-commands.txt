@@ -1,0 +1,20 @@
+docker images
+docker container run -it -d alpine /bin/sh
+docker exec -it 391000246dc3 /bin/sh
+
+dd if=/dev/zero of=100mb.dat bs=1024 count=102400
+
+docker stop 391000246dc3
+docker container restart 391000246dc3
+
+
+
+
+##) Note
+docker images
+# is the same as 
+docker image ls
+
+docker ps
+# is the same as
+docker container ls
