@@ -1,9 +1,11 @@
-#1)
+# Preparation
+#1) Activate ANF
 az provider register --namespace Microsoft.NetApp --wait
+#2) Create a new resource group
 az create group -n anftest-rg -l japaneast
 
+#3) Create AKS. Pls change {your_resourcce_group} to your resource-group.  
 RG={your_resourcce_group}
-
 az aks create \
     -g $RG \
     -n AnfCluster01 \
@@ -13,9 +15,10 @@ az aks create \
     --node-vm-size Standard_B2s \
     --enable-managed-identity
 
-#2)
+#4) Get access credentials for a managed Kubernetes cluster.
 RG={your_resourcce_group}
 az aks get-credentials -n AnfCluster01 -g $RG
 
+#5) Check Node status and Pod status
 kubectl get node -o wide
 kubectl get po -o wide
