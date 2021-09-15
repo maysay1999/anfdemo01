@@ -5,4 +5,4 @@ az network vnet subnet create \
     --vnet-name $MCVNET \
     --name netapp-subnet \
     --delegations "Microsoft.NetApp/volumes" \
-    --address-prefixes 10.0.0.0/28 
+    --address-prefixes 10.0.0.0/26
