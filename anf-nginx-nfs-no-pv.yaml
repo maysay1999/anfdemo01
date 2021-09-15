@@ -1,10 +1,10 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: nginx-nfs-01
+  name: nginx-nfs-test
 spec:
   containers:
-  - name: nginx-nfs-01
+  - name: nginx-nfs-test
     image: nginx
     resources:
       requests:
