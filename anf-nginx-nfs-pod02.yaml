@@ -1,0 +1,26 @@
+kind: Pod
+apiVersion: v1
+metadata:
+  name: nginx-nfs02
+spec:
+  containers:
+  - name: nginx-nfs02
+    image: nginx
+    resources:
+      requests:
+        cpu: 100m
+        memory: 128Mi
+      limits:
+        cpu: 250m
+        memory: 256Mi
+    command:
+    - "/bin/sh"
+    - "-c"
+    - while true; do echo $(date) >> /mnt/azure/outfile; sleep 1; done
+    volumeMounts:
+    - name: disk01
+      mountPath: /mnt/azure
+  volumes:
+  - name: disk01
+    persistentVolumeClaim:
+      claimName: pvc-nfs
