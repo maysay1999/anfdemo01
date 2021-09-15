@@ -7,7 +7,7 @@ az create group -n anftest-rg -l japaneast
 #3) Create AKS. Pls change {your_resourcce_group} to your resource-group.  
 #RG={your_resourcce_group}
 az aks create \
-    -g $RG \
+    -g anftest-rg \
     -n AnfCluster01 \
     -l japaneast \
     --node-count 2 \
@@ -17,7 +17,7 @@ az aks create \
 
 #4) Get access credentials for a managed Kubernetes cluster.
 #RG={your_resourcce_group}
-az aks get-credentials -n AnfCluster01 -g $RG
+az aks get-credentials -n AnfCluster01 -g anftest-rg
 
 #5) Check Node status and Pod status
 kubectl get node -o wide
