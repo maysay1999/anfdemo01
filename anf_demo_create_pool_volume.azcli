@@ -1,3 +1,10 @@
+# create ANF account 
+MCRG={your_resource_group}
+az netappfiles account create \
+    -g $MCRG \
+    --name anfac01 -l japaneast \
+    --tags owner=anfdemo location=japaneast
+
 # create a pool
 MCRG={your_resource_group}
 az netappfiles pool create \
@@ -13,7 +20,7 @@ MCRG={your_resource_group}
 MCVNET={your_resource_group}
 az netappfiles volume create \
     --resource-group $MCRG \
-    --location australiaeast \
+    --location japaneast \
     --account-name anfac01 \
     --pool-name mypool1 \
     --name myvol1 \
