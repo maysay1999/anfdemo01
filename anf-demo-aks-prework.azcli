@@ -20,5 +20,7 @@ az aks create \
 az aks get-credentials -n AnfCluster01 -g anftest-rg
 
 #5) Check Node status and Pod status
+kubectl get node
 kubectl get node -o wide
+kubectl describe node
 kubectl get pod -o wide
