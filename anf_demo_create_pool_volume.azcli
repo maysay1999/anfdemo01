@@ -1,13 +1,13 @@
 # create ANF account 
-#MCRG=MC_anftest-rg_AnfCluster01_japaneast
+MCRG=MC_anftest-rg_AnfCluster01_japaneast
 az netappfiles account create \
-    -g MC_anftest-rg_AnfCluster01_japaneast \
+    -g $MCRG \
     --name anfac01 -l japaneast \
     --tags owner=anfdemo location=japaneast
 
 # create a pool
 az netappfiles pool create \
-    --resource-group MC_anftest-rg_AnfCluster01_japaneast \
+    --resource-group $MCRG \
     --location japaneast \
     --account-name anfac01 \
     --pool-name mypool1 \
@@ -17,7 +17,7 @@ az netappfiles pool create \
 # create a volume
 MCVNET={your_vnet}
 az netappfiles volume create \
-    --resource-group MC_anftest-rg_AnfCluster01_japaneast \
+    --resource-group $MCRG \
     --location japaneast \
     --account-name anfac01 \
     --pool-name mypool1 \
@@ -31,7 +31,7 @@ az netappfiles volume create \
 
 # View the created volume
 az netappfiles volume show \
-    --resource-group MC_anftest-rg_AnfCluster01_japaneast \
+    --resource-group $MCRG \
     --account-name anfac01 \
     --pool-name mypool1 \
     --volume-name myvol1
