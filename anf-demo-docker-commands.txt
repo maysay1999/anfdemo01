@@ -1,12 +1,12 @@
 docker images
 docker run -it -d alpine /bin/sh
-docker exec -it 391000246dc3 /bin/sh
+docker exec -it xxxxxxxxxxxx /bin/sh
 
 dd if=/dev/zero of=100mb.dat bs=1024 count=102400
-docker stop 391000246dc3
+docker stop xxxxxxxxxxxx
 
 dd if=/dev/zero of=100mb.dat bs=1024 count=102400
-docker restart 391000246dc3
+docker restart xxxxxxxxxxxx
 
 
 ##) Note
