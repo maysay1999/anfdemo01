@@ -1,7 +1,7 @@
 MCRG={your_resource_group}
 MCVNET={your_resource_group}
 az network vnet subnet create \
-    --resource-group $MCRG \
+    --resource-group MC_anftest-rg_AnfCluster01_japaneast \
     --vnet-name $MCVNET \
     --name netapp-subnet \
     --delegations "Microsoft.NetApp/volumes" \
