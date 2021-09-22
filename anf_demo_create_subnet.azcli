@@ -1,4 +1,4 @@
-MCRG={your_resource_group}
+#MCRG={your_resource_group}
 MCVNET={your_resource_group}
 az network vnet subnet create \
     --resource-group MC_anftest-rg_AnfCluster01_japaneast \
