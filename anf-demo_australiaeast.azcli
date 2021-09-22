@@ -1,0 +1,66 @@
+#3) Create AKS. Pls change {your_resourcce_group} to your resource-group.  
+#RG={your_resourcce_group}
+az aks create \
+    -g masayosh.rg \
+    -n AnfCluster01 \
+    -l australiaeast \
+    --node-count 2 \
+    --generate-ssh-keys \
+    --node-vm-size Standard_B2s \
+    --enable-managed-identity
+
+#4) Get access credentials for a managed Kubernetes cluster.
+#RG={your_resourcce_group}
+az aks get-credentials -n AnfCluster01 -g masayosh.rg
+#
+az network vnet subnet create \
+    --resource-group MC_anftest-rg_AnfCluster01_japaneast \
+    --vnet-name $MCVNET \
+    --name netapp-subnet \
+    --delegations "Microsoft.NetApp/volumes" \
+    --address-prefixes 10.0.0.0/26
+#
+az network vnet subnet create \
+    --resource-group MC_anftest-rg_AnfCluster01_japaneast \
+    --vnet-name $MCVNET \
+    --name netapp-subnet \
+    --delegations "Microsoft.NetApp/volumes" \
+    --address-prefixes 10.0.0.0/26
+#
+# create ANF account 
+#MCRG=MC_anftest-rg_AnfCluster01_japaneast
+az netappfiles account create \
+    -g MC_anftest-rg_AnfCluster01_japaneast \
+    --name anfac01 -l australiaeast \
+    --tags owner=anfdemo location=japaneast
+
+# create a pool
+az netappfiles pool create \
+    --resource-group MC_anftest-rg_AnfCluster01_japaneast \
+    --location australiaeast \
+    --account-name anfac01 \
+    --pool-name mypool1 \
+    --size 4 \
+    --service-level Standard
+
+# create a volume
+MCVNET={your_vnet}
+az netappfiles volume create \
+    --resource-group MC_anftest-rg_AnfCluster01_japaneast \
+    --location australiaeast \
+    --account-name anfac01 \
+    --pool-name mypool1 \
+    --name myvol1 \
+    --service-level Standard \
+    --vnet $MCVNET \
+    --subnet netapp-subnet \
+    --usage-threshold 100 \
+    --file-path nfspath01 \
+    --protocol-types NFSv3
+
+# View the created volume
+az netappfiles volume show \
+    --resource-group MC_anftest-rg_AnfCluster01_japaneast \
+    --account-name anfac01 \
+    --pool-name mypool1 \
+    --volume-name myvol1
