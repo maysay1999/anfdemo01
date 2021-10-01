@@ -1,5 +1,5 @@
 MCRG=MC_anftest-rg_AnfCluster01_japaneast
-MCVNET=aks-vnet-79874775
+MCVNET=aks-vnet-xxxxxxxx
 az network vnet subnet create \
     --resource-group $MCRG \
     --vnet-name $MCVNET \
