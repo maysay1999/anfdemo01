@@ -1,5 +1,6 @@
 # create ANF account 
 MCRG=MC_anftest-rg_AnfCluster01_japaneast
+MCVNET=aks-vnet-79874775
 az netappfiles account create \
     -g $MCRG \
     --name anfac01 -l japaneast \
@@ -15,7 +16,6 @@ az netappfiles pool create \
     --service-level Standard
 
 # create a volume
-MCVNET={your_vnet}
 az netappfiles volume create \
     --resource-group $MCRG \
     --location japaneast \
