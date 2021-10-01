@@ -1,6 +1,6 @@
 # create ANF account 
 MCRG=MC_anftest-rg_AnfCluster01_japaneast
-MCVNET=aks-vnet-79874775
+MCVNET=aks-vnet-xxxxxxxx
 az netappfiles account create \
     -g $MCRG \
     --name anfac01 -l japaneast \
