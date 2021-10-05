@@ -8,6 +8,9 @@ az network vnet subnet create \
     --delegations "Microsoft.NetApp/volumes" \
     --address-prefixes 10.0.0.0/26
 #
+az netappfiles account create \
+    -g $MCRG \
+    --name anfac01 -l japaneast \
 # create a pool
 az netappfiles pool create \
     --resource-group $MCRG \
