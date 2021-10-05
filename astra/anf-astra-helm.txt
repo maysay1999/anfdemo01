@@ -1,17 +1,27 @@
 ### Add helm repo of Helm Chart
 helm repo add bitnami https://charts.bitnami.com/bitnami
 
+### Install MariaDB only
+helm install astramaria bitnami/mariadb
+
+### Install MySQL only
+helm install astramy bitnami/mysql
+
+### Install PostgreSQL only
+helm install astrapost bitnami/mysql
+
 ### Install WordPress
-helm install astraakswp \
+helm install astrawp \
   --set wordpressUsername=wpadmin \
   --set wordpressPassword=SXCN2bj3TNcA \
   --set mariadb.auth.rootPassword=1xg2KnICsM1t \
     bitnami/wordpress
 or 
-helm install astraakswp bitnami/wordpress
+helm install astrawp bitnami/wordpress
+#helm install astraakswp bitnami/wordpress persistence.storageClass=netapp-anf-perf-standard
 
 ### Uninstall 
-helm delete astraakswp
+helm delete astrawp
 
 ### Pls refer to this manual site
 https://helm.sh/docs/helm/helm_install/
@@ -26,3 +36,7 @@ helm get all
 kubectl get svc
 helm search repo wordpress
 
+### From Netapp site
+helm repo add bitnami https://charts.bitnami.com/bitnami
+helm install astraaksmaria bitnami/mariadb --namespace <namespace> --create-namespace -–set persistence.storageClass=<storage_class>
+helm install astraaksmaria bitnami/mariadb -–set persistence.storageClass=netapp-anf-perf-standard
