@@ -31,32 +31,32 @@ git clone https://github.com/maysay1999/anfdemo01.git AnfDemo01
 - 100GiB, RWX
 - NFS client: 10.0.0.4:/nfspath01
 
-## 4. Create PVC (anf-pvc-nfs.yaml)
+## 5. Create PVC (anf-pvc-nfs.yaml)
 - Request storage 1GiB. RWX
 
-## 5. Create a pod (anf-nginx-nfs-pod.yaml)
+## 6. Create a pod (anf-nginx-nfs-pod.yaml)
 - 0.1 CPU, 128MiB memory
 - Mount point: /mnt/azure:/disk01
 
-## 6. View mounted status and Snapshot
+## 7. View mounted status and Snapshot
 - df -h
 - mount
 
-## 7. Preparation for Astra 1 (CSI)
+## 8. Preparation for Astra 1 (CSI)
 - astra/snapshot.storage.k8s.io_volumesnapshotclasses.yaml
 - astra/snapshot.storage.k8s.io_volumesnapshotcontents.yaml
 - astra/snapshot.storage.k8s.io_volumesnapshots.yaml
 - astra/rbac-snapshot-controller.yaml
 - astra/setup-snapshot-controller.yaml
 
-## 8. Preparation for Astra 2 (SP)
+## 9. Preparation for Astra 2 (SP)
 `az ad sp create-for-rbac --name http://sp-astra-service-principal --role contributor --scopes /subscriptions/SUBSCRIPTION_ID`
 
-## 9. Install Apps (anf-astra-helm.txt)
+## 10. Install Apps (anf-astra-helm.txt)
 - Install WordPress with MariaDB
 - Install MySQL
 - Install PostgreSQL 
 
-## 10. Useful command for Astra
+## 11. Useful command for Astra
 kubectl get sc\
 K8s cheatsheet(https://kubernetes.io/docs/reference/kubectl/cheatsheet/)
