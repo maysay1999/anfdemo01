@@ -57,5 +57,5 @@ git clone https://github.com/maysay1999/anfdemo01.git AnfDemo01
 - Install PostgreSQL 
 
 ## 10. Useful command for Astra
-kubectl get sc
+kubectl get sc\
 K8s cheatsheet(https://kubernetes.io/docs/reference/kubectl/cheatsheet/)
