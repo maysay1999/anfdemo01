@@ -1,11 +1,11 @@
 # AND Hands-on Session: ASK version
 
-K8s cheatsheet(https://kubernetes.io/docs/reference/kubectl/cheatsheet/)
-ex)
-kubectl get node
-kubectl get node -o wide
-kubectl describe node
-kubectl get pod -o wide
+K8s cheatsheet(https://kubernetes.io/docs/reference/kubectl/cheatsheet/)\
+ex)\
+kubectl get node\
+kubectl get node -o wide\
+kubectl describe node\
+kubectl get pod -o wide\
 
 git clone https://github.com/maysay1999/anfdemo01.git AnfDemo01
 
