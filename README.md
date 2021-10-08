@@ -7,7 +7,7 @@ kubectl get node -o wide
 kubectl describe node
 kubectl get pod -o wide
 
-##1. Create AKS cluster (anf-demo-aks-prework.azcli)
+## 1. Create AKS cluster (anf-demo-aks-prework.azcli)
 - resource group: anftest-rg
 - Cluster name: AnfCluster01
 
