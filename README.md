@@ -1,4 +1,4 @@
-# Azure NetApp Files Hands-on Session: ASK version
+# Azure NetApp Files Hands-on Session: AKS version
 
 K8s cheatsheet(https://kubernetes.io/docs/reference/kubectl/cheatsheet/)
 
