@@ -22,8 +22,10 @@ kubectl delete -f {name}.yaml
 git clone https://github.com/maysay1999/anfdemo01.git AnfDemo01
 
 ## 1. Install Trident
+- Create a new resource group (anf-demo-aks-prework.azcli)
 - Install Ubuntu [ARM for Ubuntu](https://github.com/maysay1999/anfdemo01/tree/main/trident)
-- Cluster name: AnfCluster01
+- Download Trident\ 
+  curl -L -O -C - https://github.com/NetApp/trident/releases/download/v21.07.1/trident-installer-21.07.1.tar.gz
 
 ## 1. Create AKS cluster (anf-demo-aks-prework.azcli)
 - Resource group: anftest-rg
