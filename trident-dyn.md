@@ -104,5 +104,6 @@ Copy 'az aks get-credentials…' and paste to Trident VM
 ## 16. View mounted status and Snapshot
 - df -h
 - mount
+- dd if=/dev/zero of=5m.dat bs=1024 count=5120
 
 ---
