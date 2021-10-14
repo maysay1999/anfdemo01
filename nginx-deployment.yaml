@@ -27,4 +27,4 @@ spec:
       volumes:
       - name: disk01
         persistentVolumeClaim:
-          claimName: azure-netapp-files
+          claimName: anf-pvc
