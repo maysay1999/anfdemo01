@@ -85,21 +85,26 @@ Copy 'az aks get-credentials…' on Azure Portal and paste to Trident VM
 - Note that  ClientID is the same as appID
 
 ## 12. Create backend
+- cd to AnfDemo01 `cd ~/AnfDemo01`
 - `kubectl apply -f trident-installer/sample-input/backends-samples/azure-netapp-files/backend-anf.yaml -n trident`
 - Verify `tridentctl -n trident create backend -f trident-installer/sample-input/backends-samples/azure-netapp-files/backend-anf.yaml`
 
 ## 13. Create StorageClass (anf-storageclass.yaml)
+- cd to AnfDemo01 `cd ~/AnfDemo01/astra`
+- `kubectl apply -f anf-storageclass.yaml`
 - Name: azure-netapp-files
 - NFS
 - Verify `kubectl get sc azure-netapp-files`
 
 ## 14. Create PVC (anf-pvc.yaml)
+- `kubectl apply -f anf-pvc.yaml`
 - Name: anf-pvc
 - SC name: azure-netapp-files
 - Storage 1TiB. RWX
 - Verify `kubectl get pvc -n trident`
 
 ## 15. Create a pod (anf-nginx-pod.yaml)
+- `kubectl apply -f anf-nginx-pod.yaml`
 - CPU 100m, Mem 128Mi
 - Mount path: /mnt/data
 - Storage 1TiB. RWX
@@ -108,5 +113,11 @@ Copy 'az aks get-credentials…' on Azure Portal and paste to Trident VM
 - df -h
 - mount
 - dd if=/dev/zero of=5m.dat bs=1024 count=5120
+
+## 17. Create a deployment (nginx-deployment.yaml)
+- `kubectl apply -f nginx_deployment.yaml`
+- `kubectl expose deployment nginx-anf-trident --port=80 --type=LoadBalancer`
+- `kubectl exec -it nginx-anf-trident -- chmod 755 /usr/share/nginx/html`
+- `kubectl cp ./index.html nginx-anf-trident:/usr/share/nginx/html/`
 
 ---
