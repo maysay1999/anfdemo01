@@ -2,10 +2,11 @@
 
 K8s cheatsheet(https://kubernetes.io/docs/reference/kubectl/cheatsheet/)
 
+### **Procedure different between Static Provisioning and Dynamic Provisioning**
 ### **Static Provisioning** ==> 1) pv 2) pvc 3) pod
 ### **Dynamic Provisioning** ==> 1) sc 2) pvc 3) pod
 
-ex)\
+example)\
 kubectl get no\
 kubectl get node -o wide\
 kubectl describe node\
@@ -19,7 +20,8 @@ kubectl get svc\
 kubectl apply -f {name}.yaml\
 kubectl delete -f {name}.yaml
 
-git clone https://github.com/maysay1999/anfdemo01.git AnfDemo01
+Use this command to create a clone of this site locally\
+`git clone https://github.com/maysay1999/anfdemo01.git AnfDemo01`
 
 
 ## 1. Create Ubuntu VM for Trident
