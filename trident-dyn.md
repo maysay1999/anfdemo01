@@ -2,8 +2,8 @@
 
 K8s cheatsheet(https://kubernetes.io/docs/reference/kubectl/cheatsheet/)
 
-### **Static Provisioning** ==> 1) PV 2) pod
-### **Dynamic Provisioning** ==> 1) Trident 2) pvc 3) pod
+### **Static Provisioning** ==> 1) pv 2) pvc 3) pod
+### **Dynamic Provisioning** ==> 1) sc 2) pvc 3) pod
 
 ex)\
 kubectl get no\
