@@ -21,7 +21,8 @@ kubectl delete -f {name}.yaml
 
 git clone https://github.com/maysay1999/anfdemo01.git AnfDemo01
 
-## 1. Setup Trident VM
+
+## 1. Create Ubuntu VM for Trident
 - Create a new resource group (anf-demo-aks-prework.azcli)
 - Create Ubuntu VM [ARM for Ubuntu](https://github.com/maysay1999/anfdemo01/tree/main/trident)
 
@@ -84,33 +85,24 @@ Copy 'az aks get-credentials…' and paste to Trident VM
 - `kubectl apply -f trident-installer/sample-input/backends-samples/azure-netapp-files/backend-anf.yaml -n trident`
 - Verify `tridentctl -n trident create backend -f trident-installer/sample-input/backends-samples/azure-netapp-files/backend-anf.yaml`
 
-## 13. Create PVC (anf-pvc.yaml)
+## 13. Create StorageClass (anf-storageclass.yaml)
+- Name: azure-netapp-files
+- NFS
+- Verify `kubectl get sc azure-netapp-files`
+
+## 14. Create PVC (anf-pvc.yaml)
+- Name: anf-pvc
 - SC name: azure-netapp-files
 - Storage 1TiB. RWX
+- Verify `kubectl get pvc -n trident`
 
-## 6. Create a pod (anf-nginx-nfs-pod.yaml)
-- SC name: azure-netapp-files
+## 15. Create a pod (anf-nginx-pod.yaml)
+- CPU 100m, Mem 128Mi
+- Mount path: /mnt/data
 - Storage 1TiB. RWX
 
-## 7. View mounted status and Snapshot
+## 16. View mounted status and Snapshot
 - df -h
 - mount
 
-## 8. Preparation for Astra 1 (CSI)
-- astra/snapshot.storage.k8s.io_volumesnapshotclasses.yaml
-- astra/snapshot.storage.k8s.io_volumesnapshotcontents.yaml
-- astra/snapshot.storage.k8s.io_volumesnapshots.yaml
-- astra/rbac-snapshot-controller.yaml
-- astra/setup-snapshot-controller.yaml
-
-## 9. Preparation for Astra 2 (SP)
-`az ad sp create-for-rbac --name http://sp-astra-service-principal --role contributor --scopes /subscriptions/SUBSCRIPTION_ID`
-
-## 10. Install Apps (anf-astra-helm.txt)
-- Install WordPress with MariaDB
-- Install MySQL
-- Install PostgreSQL 
-
-## 11. Useful command for Astra
-kubectl get sc\
-K8s cheatsheet(https://kubernetes.io/docs/reference/kubectl/cheatsheet/)
+---
