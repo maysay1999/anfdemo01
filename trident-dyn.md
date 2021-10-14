@@ -6,11 +6,12 @@ K8s cheatsheet(https://kubernetes.io/docs/reference/kubectl/cheatsheet/)
 ### **Static Provisioning** ==> 1) pv 2) pvc 3) pod
 ### **Dynamic Provisioning** ==> 1) sc 2) pvc 3) pod
 
-example)\
+Examples)\
 kubectl get no\
-kubectl get node -o wide\
+kubectl get nodes -o wide\
 kubectl describe node\
 kubectl get po -o wide\
+kubectl get namespaces -o wide
 kubectl get ns {name}\
 kubectl get deploy\
 kubectl get pv\
@@ -32,15 +33,12 @@ Use this command to create a clone of this site locally\
 - Resource group: anftest-rg
 - Cluster name: AnfCluster01
 
-## 3. Connect AKS cluster to Trident VM
-Copy 'az aks get-credentials…' and paste to Trident VM
-
-## 4. Create ANF subnet and delegate the subnet for ANF (anf_demo_create_subnet.azcli)
+## 3. Create ANF subnet and delegate the subnet for ANF (anf_demo_create_subnet.azcli)
 - Resource group for Nodes(VMs): MC_anftest-rg_AnfCluster01_japaneast
 - Vnet inside MC_anftest-rg_AnfCluster01_japaneast: aks-vnet-xxxxxxxx
 - ANF subnet: 10.0.0.0/26
 
-## 5. Create ANF account, pool and volume (anf_demo_create_pool_volume.azcli)
+## 4. Create ANF account, pool and volume (anf_demo_create_pool_volume.azcli)
 - ANF account: anfac01
 - Pool named mypool1: 4TB, Standard
 - Volume named myvol1: 100GB, NGFSv3
@@ -48,11 +46,14 @@ Copy 'az aks get-credentials…' and paste to Trident VM
 *chmod 711 anf_demo_create_pool_volume.azcli*
 *./anf_demo_create_pool_volume.azcli*
 
-## 6. Install kubectl, helm, az cli and git
+## 5. Install kubectl, helm, az cli and git
 - Install kubectl `sudo snap install kubectl --classic`
 - Install helm `sudo snap install helm --classic`
 - Install Azure CLI `curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash`
 - Install git `sudo apt update &&apt install git-all`
+
+## 6. Connect AKS cluster to Trident VM
+Copy 'az aks get-credentials…' on Azure Portal and paste to Trident VM
 
 ## 7. az login to Azure on Trident VM
 - `az login --use-device-code`
