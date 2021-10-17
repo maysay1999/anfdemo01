@@ -2,22 +2,23 @@
 helm repo add bitnami https://charts.bitnami.com/bitnami
 
 ### Install MariaDB only
-helm install astramaria bitnami/mariadb
+helm install astramaria bitnami/mariadb -n maria01
 
 ### Install MySQL only
-helm install astramy bitnami/mysql
+helm install astramy bitnami/mysql -n mysql01
 
 ### Install PostgreSQL only
-helm install astrapost bitnami/mysql
+helm install astrapost bitnami/postgresql -n postgresql01
 
 ### Install WordPress
+helm install astrawp bitnami/wordpress -n wp01
+or
 helm install astrawp \
   --set wordpressUsername=wpadmin \
   --set wordpressPassword=SXCN2bj3TNcA \
   --set mariadb.auth.rootPassword=1xg2KnICsM1t \
     bitnami/wordpress
-or 
-helm install astrawp bitnami/wordpress
+
 #helm install astraakswp bitnami/wordpress persistence.storageClass=netapp-anf-perf-standard
 
 ### Uninstall 
