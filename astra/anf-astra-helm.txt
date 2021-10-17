@@ -12,16 +12,7 @@ helm install astrapost bitnami/postgresql -n postgresql01 --create-namespace
 
 ### Install WordPress
 helm install astrawp bitnami/wordpress -n wp01 --create-namespace
-or
-helm install astrawp \
-  --set wordpressUsername=wpadmin \
-  --set wordpressPassword=SXCN2bj3TNcA \
-  --set mariadb.auth.rootPassword=1xg2KnICsM1t \
-    bitnami/wordpress
-  --namespace wp02
-  --create-namespace
 
-#helm install astraakswp bitnami/wordpress persistence.storageClass=netapp-anf-perf-standard
 
 ### Uninstall 
 helm delete astrawp
