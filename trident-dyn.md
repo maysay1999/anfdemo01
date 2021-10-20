@@ -50,7 +50,7 @@ Use this command to create a clone of this site locally\
 - Install kubectl `sudo snap install kubectl --classic`
 - Install helm `sudo snap install helm --classic`
 - Install Azure CLI `curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash`
-- Install git `sudo apt update &&apt install git-all`
+- Install git `sudo apt install git-all -y`
 
 ## 6. Connect AKS cluster to Trident VM
 Copy 'az aks get-credentials…' on Azure Portal and paste to Trident VM
@@ -63,10 +63,11 @@ Copy 'az aks get-credentials…' on Azure Portal and paste to Trident VM
 
 ## 8. Install Trident 
 - Download Trident `curl -L -O -C - https://github.com/NetApp/trident/releases/download/v21.07.1/trident-installer-21.07.1.tar.gz`
-- Extract tar `tar xzvf trident-installer-21.07.1.tar.gz`
+- Extract tar `tar xzvf trident-installer-21.07.1.tar.gz
+- Copy tridentctl to bin  `cd trident-installer`  `sudo cp tridentctl /usr/local/bin`
 - Create a Trident Namespace `kubectl create ns trident`
-- Deploy Trident operator `kubectl apply -f trident-installer/deploy/bundle.yaml -n trident`
-- Create a TridentOrchestrator `kubectl apply -f trident-installer/deploy/crds/tridentorchestrator_cr.yaml` and `kubectl describe torc trident` to verify
+- ~~Deploy Trident operator `kubectl apply -f trident-installer/deploy/bundle.yaml -n trident`~~
+- ~~Create a TridentOrchestrator `kubectl apply -f trident-installer/deploy/crds/tridentorchestrator_cr.yaml` and `kubectl describe torc trident` to verify~~
 - git clone https://github.com/maysay1999/anfdemo01.git AnfDemo01
 
 ## 9. Configure CSI
