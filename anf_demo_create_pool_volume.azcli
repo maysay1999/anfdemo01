@@ -4,7 +4,7 @@ MCVNET=aks-vnet-xxxxxxxx
 az netappfiles account create \
     -g $MCRG \
     --name anfac01 -l japaneast \
-    --tags owner=anfdemo location=japaneast
+    --tags owner=anfdemo location="office A"
 
 # create a pool
 az netappfiles pool create \
