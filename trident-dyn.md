@@ -89,8 +89,8 @@ Copy 'az aks get-credentials…' on Azure Portal and paste to Trident VM
 - Note that  ClientID is the same as appID. location: **japaneast**, serviceLevel: **Standard**
 
 ## 12. Create backend
-- cd to AnfDemo01 `cd ~/AnfDemo01`
-- `kubectl apply -f trident-installer/sample-input/backends-samples/azure-netapp-files/backend-anf.yaml -n trident`
+- cd to AnfDemo01 `cd ~/trident-installer`
+- `kubectl apply -f sample-input/backends-samples/azure-netapp-files/backend-anf.yaml -n trident`
 - Verify `tridentctl -n trident create backend -f trident-installer/sample-input/backends-samples/azure-netapp-files/backend-anf.yaml`
 
 ## 13. Create StorageClass (anf-storageclass.yaml)
