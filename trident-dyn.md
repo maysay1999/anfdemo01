@@ -118,7 +118,7 @@ Copy 'az aks get-credentials…' on Azure Portal and paste to Trident VM
 - mount
 - dd if=/dev/zero of=5m.dat bs=1024 count=5120
 
-## 17. Create a deployment (nginx-deployment.yaml)
+## 17. Create a deployment (nginx-deployment.yaml) --> optional
 - `kubectl apply -f nginx_deployment.yaml`
 - `kubectl expose deployment nginx-anf-trident --port=80 --type=LoadBalancer`
 - `kubectl exec -it nginx-anf-trident -- chmod 755 /usr/share/nginx/html`
