@@ -64,7 +64,7 @@ Copy 'az aks get-credentials…' on Azure Portal and paste to Trident VM
 ## 8. Install Trident 
 - Download Trident `curl -L -O -C - https://github.com/NetApp/trident/releases/download/v21.07.2/trident-installer-21.07.2.tar.gz`
 - Extract tar `tar xzvf trident-installer-21.07.2.tar.gz
-- Copy tridentctl to bin  `cd trident-installer`  `sudo cp tridentctl /usr/local/bin`
+- ~~Copy tridentctl to bin  `cd trident-installer`  `sudo cp tridentctl /usr/local/bin`~~
 - Create a Trident Namespace `kubectl create ns trident`
 - ~~Install trident with helm `cd helm` `helm install trident trident-operator-21.07.2.tgz - trident`~~
 - Deploy Trident operator `kubectl apply -f trident-installer/deploy/bundle.yaml -n trident`
