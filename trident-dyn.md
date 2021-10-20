@@ -66,9 +66,9 @@ Copy 'az aks get-credentials…' on Azure Portal and paste to Trident VM
 - Extract tar `tar xzvf trident-installer-21.07.2.tar.gz
 - Copy tridentctl to bin  `cd trident-installer`  `sudo cp tridentctl /usr/local/bin`
 - Create a Trident Namespace `kubectl create ns trident`
-- Install trident with helm `cd helm` `helm install trident trident-operator-21.07.2.tgz --namespace trident`
-- ~~Deploy Trident operator `kubectl apply -f trident-installer/deploy/bundle.yaml -n trident`~~
-- ~~Create a TridentOrchestrator `kubectl apply -f trident-installer/deploy/crds/tridentorchestrator_cr.yaml` and `kubectl describe torc trident` to verify~~
+- ~~Install trident with helm `cd helm` `helm install trident trident-operator-21.07.2.tgz - trident`~~
+- Deploy Trident operator `kubectl apply -f trident-installer/deploy/bundle.yaml -n trident`
+- Create a TridentOrchestrator `kubectl apply -f trident-installer/deploy/crds/tridentorchestrator_cr.yaml` and `kubectl describe torc trident` to verify
 - Download codes `cd ~` `git clone https://github.com/maysay1999/anfdemo01.git AnfDemo01`
 
 ## 9. Configure CSI
@@ -94,7 +94,7 @@ Copy 'az aks get-credentials…' on Azure Portal and paste to Trident VM
 - ~~Verify `tridentctl -n trident create backend -f trident-installer/sample-input/backends-samples/azure-netapp-files/backend-anf.yaml`~~
 
 ## 13. Create StorageClass (anf-storageclass.yaml)
-- cd to AnfDemo01 `cd ~/AnfDemo01/astra`
+- cd to AnfDemo01 `cd ~/AnfDemo01`
 - `kubectl apply -f anf-storageclass.yaml`
 - Name: azure-netapp-files
 - NFS
