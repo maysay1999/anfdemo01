@@ -85,7 +85,7 @@ Copy 'az aks get-credentials…' on Azure Portal and paste to Trident VM
 
 ## 11. modify backend-anf.yaml (backend-anf.yaml)
 - path: trident-installer/sample-input/backends-samples/azure-netapp-files/backend-anf.yaml `cd ~/trident-installer/sample-input/backends-samples/azure-netapp-files/`
-- Edit backend-anf.yaml `code  backend-anf.yaml`
+- Edit backend-anf.yaml `vim backend-anf.yaml`
 - Note that  ClientID is the same as appID. location: **japaneast**, serviceLevel: **Standard**
 
 ## 12. Create backend
