@@ -43,7 +43,7 @@ git clone https://github.com/maysay1999/anfdemo01.git AnfDemo01
 It's an example of JSON.\
 {\
   "appId": "4b713e57-b68a-45f6-aac4-itsfakexxxx",\
-  "displayName": "http://sp-astra-service-principal",\s
+  "displayName": "xxxxxxxxxxxxxxxxxxx",\
   "name": "4b713e57-b68a-45f6-aac4-itsfakexxxx",\
   "password": "kEb-3zXnxBa7blJNitsfakexxxxxxxxx",\
   "tenant": "588b175c-bf7e-491a-92e5-itsfakexxxxxx"\
