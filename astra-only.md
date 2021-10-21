@@ -36,7 +36,7 @@ git clone https://github.com/maysay1999/anfdemo01.git AnfDemo01
 - `kubectl apply -f rbac-snapshot-controller.yaml`
 - `kubectl apply -f setup-snapshot-controller.yaml`
 
-## 9. Create Astra Service Principal
+## 5. Create Astra Service Principal
 - Obtain the subscription ID  `az account show`
 - Create a new Service Principal namaed http://sp-astra-service-principal  `az ad sp create-for-rbac --name http://sp-astra-service-principal --role contributor --scopes /subscriptions/{SUBSCRIPTION_ID}`
 - Copy the outputed JSON\
@@ -49,11 +49,27 @@ It's an example of JSON.\
   "tenant": "588b175c-bf7e-491a-92e5-itsfakexxxxxx"\
 }   
 
-## 10. Install Apps (anf-astra-helm.txt)
-- Install WordPress with MariaDB
-- Install MySQL
-- Install PostgreSQL 
+## 6. Install Help Chart Repository (anf-astra-helm.txt)
+- `helm repo add bitnami https://charts.bitnami.com/bitnami`
 
-## 11. Useful command for Astra
-kubectl get sc\
-K8s cheatsheet(https://kubernetes.io/docs/reference/kubectl/cheatsheet/)
+## 7. Install MariaDB only
+- Install `helm install astramaria bitnami/mariadb -n maria01 --create-namespace`
+- Verify `kubectl get po -n maria01`
+- Verify `kubectl get po -A`
+
+## 8. Install PostgreSQL only
+- Install `helm install astrapost bitnami/postgresql -n postgresql01 --create-namespace`
+- Verify `kubectl get po -n postgresql01`
+- Verify `kubectl get po -A`
+
+## 9. Install PostgreSQL only
+- Install `helm install astrapost bitnami/postgresql -n postgresql01 --create-namespace`
+- Verify `kubectl get po -n postgresql01`
+- Verify `kubectl get po -A`
+
+## 10. Install WordPress
+- Install `helm install astrawp bitnami/wordpress -n wp01 --create-namespace`
+- Verify `kubectl get po -n wp01`
+- Verify `kubectl get po -A`
+
+---
