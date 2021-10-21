@@ -40,7 +40,7 @@ git clone https://github.com/maysay1999/anfdemo01.git AnfDemo01
 - Obtain the subscription ID  `az account show`
 - Create a new Service Principal `az ad sp create-for-rbac --name http://sp-astra-service-principal --role contributor --scopes /subscriptions/{SUBSCRIPTION_ID}`
 - Copy the outputed JSON\
-It's an example of JSON.\
+Example of JSON\
 {\
   "appId": "4b713e57-b68a-45f6-aac4-itsfakexxxx",\
   "displayName": "xxxxxxxxxxxxxxxxxxx",\
