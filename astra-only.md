@@ -38,7 +38,7 @@ git clone https://github.com/maysay1999/anfdemo01.git AnfDemo01
 
 ## 5. Create Astra Service Principal
 - Obtain the subscription ID  `az account show`
-- Create a new Service Principal\ `az ad sp create-for-rbac --name http://sp-astra-service-principal --role contributor --scopes /subscriptions/{SUBSCRIPTION_ID}`
+- Create a new Service Principal `az ad sp create-for-rbac --name http://sp-astra-service-principal --role contributor --scopes /subscriptions/{SUBSCRIPTION_ID}`
 - Copy the outputed JSON\
 It's an example of JSON.\
 {\
