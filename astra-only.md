@@ -62,12 +62,7 @@ git clone https://github.com/maysay1999/anfdemo01.git AnfDemo01
 - Verify `kubectl get po -n postgresql01`
 - Verify `kubectl get po -A`
 
-## 9. Install PostgreSQL only
-- Install `helm install astrapost bitnami/postgresql -n postgresql01 --create-namespace`
-- Verify `kubectl get po -n postgresql01`
-- Verify `kubectl get po -A`
-
-## 10. Install WordPress
+## 9. Install WordPress
 - Install `helm install astrawp bitnami/wordpress -n wp01 --create-namespace`
 - Verify `kubectl get po -n wp01`
 - Verify `kubectl get po -A`
