@@ -41,13 +41,13 @@ git clone https://github.com/maysay1999/anfdemo01.git AnfDemo01
 - Create a new Service Principal namaed http://sp-astra-service-principal  `az ad sp create-for-rbac --name http://sp-astra-service-principal --role contributor --scopes /subscriptions/{SUBSCRIPTION_ID}`
 - Copy the outputed JSON
 It's an example of JSON.\
-`{\
+{\
   "appId": "4b713e57-b68a-45f6-aac4-itsfakexxxx",\
   "displayName": "http://sp-astra-service-principal",\
   "name": "4b713e57-b68a-45f6-aac4-itsfakexxxx",\
   "password": "kEb-3zXnxBa7blJNitsfakexxxxxxxxx",\
   "tenant": "588b175c-bf7e-491a-92e5-itsfakexxxxxx"\
-}`   
+}   
 
 ## 10. Install Apps (anf-astra-helm.txt)
 - Install WordPress with MariaDB
