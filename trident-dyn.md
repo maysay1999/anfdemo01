@@ -52,14 +52,14 @@ Use this command to create a clone of this site locally\
 - Install Azure CLI `curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash`
 - Install git `sudo apt install git-all -y`
 
-## 6. Connect AKS cluster to Trident VM
-Copy 'az aks get-credentials…' on Azure Portal and paste to Trident VM
-
-## 7. az login to Azure on Trident VM
+## 6. az login to Azure on Trident VM
 - `az login --use-device-code`
 - `https://microsoft.com/devicelogin`
 - Verify with this command `kubectl get deployments --all-namespaces=true`
 - Set as default account `az account set -s SUBSCRIPTION_ID`
+
+## 7. Connect AKS cluster to Trident VM
+Copy 'az aks get-credentials…' on Azure Portal and paste to Trident VM
 
 ## 8. Install Trident 
 - Download Trident `curl -L -O -C - https://github.com/NetApp/trident/releases/download/v21.07.2/trident-installer-21.07.2.tar.gz`
