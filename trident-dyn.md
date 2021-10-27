@@ -80,7 +80,7 @@ Copy 'az aks get-credentials…' on Azure Portal and paste to Trident VM
 - `kubectl apply -f setup-snapshot-controller.yaml`
 
 ## 10. Create Service Principal
-- Creaete a new SP named "http://netapptrident" `az ad sp create-for-rbac --name "http://netapptrident"`
+- Creaete a new SP named "http://netapptrident" `az ad sp create-for-rbac --name "http://netapptridentxxx"`
 - Gain Subection ID `az acounnt show`
 
 ## 11. modify backend-anf.yaml (backend-anf.yaml)
