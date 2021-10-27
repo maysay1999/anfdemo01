@@ -64,12 +64,13 @@ Copy 'az aks get-credentials…' on Azure Portal and paste to Trident VM
 ## 8. Install Trident 
 - Download Trident `curl -L -O -C - https://github.com/NetApp/trident/releases/download/v21.07.2/trident-installer-21.07.2.tar.gz`
 - Extract tar `tar xzvf trident-installer-21.07.2.tar.gz`
-- ~~Copy tridentctl to bin  `cd trident-installer`  `sudo cp tridentctl /usr/local/bin`~~
+- Copy tridentctl to /usr/bin/  `cd trident-installer`  `sudo cp tridentctl /usr/local/bin/`
 - Create a Trident Namespace `kubectl create ns trident`
-- ~~Install trident with helm `cd helm` `helm install trident trident-operator-21.07.2.tgz - trident`~~
-- Deploy Trident operator `kubectl apply -f trident-installer/deploy/bundle.yaml -n trident`
-- Create a TridentOrchestrator `kubectl apply -f trident-installer/deploy/crds/tridentorchestrator_cr.yaml` and `kubectl describe torc trident` to verify
+- Install trident with helm `cd helm` `helm install trident trident-operator-21.07.0.tgz -n trident`
+- ~~Deploy Trident operator `kubectl apply -f trident-installer/deploy/bundle.yaml -n trident`~~
+- ~~Create a TridentOrchestrator `kubectl apply -f trident-installer/deploy/crds/tridentorchestrator_cr.yaml` and `kubectl describe torc trident` to verify~~
 - ~~Download codes `cd ~` `git clone https://github.com/maysay1999/anfdemo01.git AnfDemo01`~~
+- Verification  `kubectl get pod -n trident`
 
 ## 9. Configure CSI
 - `cd ~/AnfDemo01/astra`
@@ -80,18 +81,37 @@ Copy 'az aks get-credentials…' on Azure Portal and paste to Trident VM
 - `kubectl apply -f setup-snapshot-controller.yaml`
 
 ## 10. Create Service Principal
-- Creaete a new SP named "http://netapptrident" `az ad sp create-for-rbac --name "http://netapptridentxxx"`
+- Creaete a new SP named "http://netapptridentxxx" `az ad sp create-for-rbac --name "http://netapptridentxxx"`
 - Gain Subection ID `az acounnt show`
 
-## 11. modify backend-anf.yaml (backend-anf.yaml)
-- path: trident-installer/sample-input/backends-samples/azure-netapp-files/backend-anf.yaml `cd ~/trident-installer/sample-input/backends-samples/azure-netapp-files/`
-- Edit backend-anf.yaml `vim backend-anf.yaml`
-- Note that  ClientID is the same as appID. location: **japaneast**, serviceLevel: **Standard**
+## 11. modify backend-azure-anf-advanced.json (backend-azure-anf-advanced.json)
+- ~~path: trident-installer/sample-input/backends-samples/azure-netapp-files/backend-anf.yaml `cd ~/trident-installer/sample-input/backends-samples/azure-netapp-files/`~~
+- Edit backend-anf.yaml `vim backend-azure-anf-advanced.json`
+- Example\
+{\
+    "version": 1,\
+    "storageDriverName": "azure-netapp-files",\
+    "subscriptionID": "a9f075ef-390d-4cc4-8066-2896b4f06eb8",\
+    "tenantID": "5da13186-1f6e-413c-953a-f5aff3c0f8dd",\
+    "clientID": "199275e0-d9ca-4142-92a1-771ff555470d",\
+    "clientSecret": "zONFD4o9zl7n9yLnya.T7hxVCaiBFBYz2I",\
+    "location": "japaneast",\
+    "serviceLevel": "Standard",\
+    "virtualNetwork": "aks-vnet-39536685",\
+    "subnet": "netapp-subnet",\
+    "nfsMountOptions": "vers=3,proto=tcp,timeo=600",\
+    "limitVolumeSize": "500Gi",\
+    "defaults": {\
+        "exportRule": "0.0.0.0/0",\
+        "size": "100Gi"\
+    }\
+}
 
 ## 12. Create backend
-- cd to AnfDemo01 `cd ~/trident-installer`
-- `kubectl apply -f sample-input/backends-samples/azure-netapp-files/backend-anf.yaml -n trident`
+- cd to Trident `cd ~/trident-installer`
+- ~~`kubectl apply -f sample-input/backends-samples/azure-netapp-files/backend-anf.yaml -n trident`~~
 - ~~Verify `tridentctl -n trident create backend -f trident-installer/sample-input/backends-samples/azure-netapp-files/backend-anf.yaml`~~
+- Execute this command  `tridentctl -n trident create backend -f backend-azure-anf-advanced.json`
 
 ## 13. Create StorageClass (anf-storageclass.yaml)
 - cd to AnfDemo01 `cd ~/AnfDemo01`
@@ -105,7 +125,7 @@ Copy 'az aks get-credentials…' on Azure Portal and paste to Trident VM
 - Name: anf-pvc
 - SC name: azure-netapp-files
 - Storage 1TiB. RWX
-- Verify `kubectl get pvc -n trident`
+- Verify `kubectl get pvc anf-pvc`
 
 ## 15. Create a pod (anf-nginx-pod.yaml)
 - `kubectl apply -f anf-nginx-pod.yaml`
