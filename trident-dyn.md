@@ -92,7 +92,7 @@ Copy 'az aks get-credentials…' on Azure Portal and paste to Trident VM
 - ~~path: trident-installer/sample-input/backends-samples/azure-netapp-files/backend-anf.yaml `cd ~/trident-installer/sample-input/backends-samples/azure-netapp-files/`~~
 - `cd ~/AnfDemo01/astra`
 - Edit backend-anf.yaml `vim backend-azure-anf-advanced.json`
-- Example\
+- Example
 <pre>
 {
     "version": 1,
