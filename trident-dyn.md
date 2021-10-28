@@ -47,10 +47,18 @@ Use this command to create a clone of this site locally\
 *./anf_demo_create_pool_volume.azcli*
 
 ## 5. Install kubectl, helm, az cli and git
-- Install kubectl `sudo snap install kubectl --classic`
-- Install helm `sudo snap install helm --classic`
-- Install Azure CLI `curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash`
-- Install git `sudo apt install git-all -y`
+- ~~Install kubectl `sudo snap install kubectl --classic`~~
+- ~~Install helm `sudo snap install helm --classic`~~
+- ~~Install Azure CLI `curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash`~~
+- ~~Install git `sudo apt install git-all -y`~~
+- Install kubectl, helm, az cli and git
+<pre>
+sudo apt update && 
+sudo snap install kubectl --classic && \
+sudo snap install helm --classic && \
+curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash && \
+sudo apt install git-all -y
+</pre>
 
 ## 6. az login to Azure on Trident VM
 - `az login --use-device-code`
@@ -145,10 +153,12 @@ Copy 'az aks get-credentials…' on Azure Portal and paste to Trident VM
 - mount
 - dd if=/dev/zero of=5m.dat bs=1024 count=5120
 
-## 17. Create a deployment (nginx-deployment.yaml) --> optional
+## 17. Create a deployment (nginx-deployment.yaml)
 - `kubectl apply -f nginx_deployment.yaml`
-- `kubectl expose deployment nginx-anf-trident --port=80 --type=LoadBalancer`
-- `kubectl exec -it nginx-anf-trident -- chmod 755 /usr/share/nginx/html`
-- `kubectl cp ./index.html nginx-anf-trident:/usr/share/nginx/html/`
+- Verification of ReplicaSet  `kubectl get rs`
+- Verification of Deployment  `kubectl get deploy`
+- To have access to deployment `curl {ip_address}`
+- Login to pod  `kubectl exec -it nginx-pod -- /bin/bash`
+- Install curl  `apt update && apt install curl`  
 
 ---
