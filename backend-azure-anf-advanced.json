@@ -12,7 +12,7 @@
     "nfsMountOptions": "vers=3,proto=tcp,timeo=600",
     "limitVolumeSize": "500Gi",
     "defaults": {
-        "exportRule": "10.0.0.0/8,172.16.0.0/12,192.168.65.0/16",
+        "exportRule": "0.0.0.0/0",
         "size": "100Gi"
     }
 }
