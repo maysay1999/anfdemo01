@@ -88,24 +88,26 @@ Copy 'az aks get-credentials…' on Azure Portal and paste to Trident VM
 - ~~path: trident-installer/sample-input/backends-samples/azure-netapp-files/backend-anf.yaml `cd ~/trident-installer/sample-input/backends-samples/azure-netapp-files/`~~
 - Edit backend-anf.yaml `vim backend-azure-anf-advanced.json`
 - Example\
-{\
-    "version": 1,\
-    "storageDriverName": "azure-netapp-files",\
-    "subscriptionID": "a9f075ef-390d-4cc4-8066-2896b4f06eb8",\
-    "tenantID": "5da13186-1f6e-413c-953a-f5aff3c0f8dd",\
-    "clientID": "199275e0-d9ca-4142-92a1-771ff555470d",\
-    "clientSecret": "zONFD4o9zl7n9yLnya.T7hxVCaiBFBYz2I",\
-    "location": "japaneast",\
-    "serviceLevel": "Standard",\
-    "virtualNetwork": "aks-vnet-39536685",\
-    "subnet": "netapp-subnet",\
-    "nfsMountOptions": "vers=3,proto=tcp,timeo=600",\
-    "limitVolumeSize": "500Gi",\
-    "defaults": {\
-        "exportRule": "0.0.0.0/0",\
-        "size": "100Gi"\
-    }\
+<pre>
+{
+    "version": 1,
+    "storageDriverName": "azure-netapp-files",
+    "subscriptionID": "a9f075ef-390d-4cc4-8066-2896b4f0fake",
+    "tenantID": "5da13186-1f6e-413c-953a-f5aff3c0fake",
+    "clientID": "199275e0-d9ca-4142-92a1-771ff555fake",
+    "clientSecret": "zONFD4o9zl7n9yLnya.T7hxVCaiBFfake",
+    "location": "japaneast",
+    "serviceLevel": "Standard",
+    "virtualNetwork": "aks-vnet-xxxxxxxx",
+    "subnet": "netapp-subnet",
+    "nfsMountOptions": "vers=3,proto=tcp,timeo=600",
+    "limitVolumeSize": "500Gi",
+    "defaults": {
+        "exportRule": "10.0.0.0/8,172.16.0.0/12",
+        "size": "100Gi"
+    }
 }
+</pre>
 
 ## 12. Create backend
 - cd to Trident `cd ~/trident-installer`
