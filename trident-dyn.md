@@ -66,7 +66,7 @@ Copy 'az aks get-credentials…' on Azure Portal and paste to Trident VM
 - Extract tar `tar xzvf trident-installer-21.07.2.tar.gz`
 - Copy tridentctl to /usr/bin/  `cd trident-installer`  `sudo cp tridentctl /usr/local/bin/`
 - Create a Trident Namespace `kubectl create ns trident`
-- Install trident with helm `cd helm` `helm install trident trident-operator-21.07.0.tgz -n trident`
+- Install trident with helm `cd helm` `helm install trident trident-operator-21.07.2.tgz -n trident`
 - ~~Deploy Trident operator `kubectl apply -f trident-installer/deploy/bundle.yaml -n trident`~~
 - ~~Create a TridentOrchestrator `kubectl apply -f trident-installer/deploy/crds/tridentorchestrator_cr.yaml` and `kubectl describe torc trident` to verify~~
 - ~~Download codes `cd ~` `git clone https://github.com/maysay1999/anfdemo01.git AnfDemo01`~~
@@ -74,18 +74,23 @@ Copy 'az aks get-credentials…' on Azure Portal and paste to Trident VM
 
 ## 9. Configure CSI
 - `cd ~/AnfDemo01/astra`
-- `kubectl apply -f snapshot.storage.k8s.io_volumesnapshotclasses.yaml`
-- `kubectl apply -f snapshot.storage.k8s.io_volumesnapshotcontents.yaml`
-- `kubectl apply -f snapshot.storage.k8s.io_volumesnapshots.yaml`
-- `kubectl apply -f rbac-snapshot-controller.yaml`
-- `kubectl apply -f setup-snapshot-controller.yaml`
+- `chmod 711 csi-install.sh`
+- `./csi-install.sh`
+- ~~`kubectl apply -f snapshot.storage.k8s.io_volumesnapshotclasses.yaml`~~
+- ~~`kubectl apply -f snapshot.storage.k8s.io_volumesnapshotcontents.yaml`~~
+- ~~`kubectl apply -f snapshot.storage.k8s.io_volumesnapshots.yaml`~~
+- ~~`kubectl apply -f rbac-snapshot-controller.yaml`~~
+- ~~`kubectl apply -f setup-snapshot-controller.yaml`~~
 
 ## 10. Create Service Principal
 - Creaete a new SP named "http://netapptridentxxx" `az ad sp create-for-rbac --name "http://netapptridentxxx"`
+- Take note of the output json. 
 - Gain Subection ID `az acounnt show`
+- Take note of the output json. 
 
 ## 11. modify backend-azure-anf-advanced.json (backend-azure-anf-advanced.json)
 - ~~path: trident-installer/sample-input/backends-samples/azure-netapp-files/backend-anf.yaml `cd ~/trident-installer/sample-input/backends-samples/azure-netapp-files/`~~
+- `cd ~/AnfDemo01/astra`
 - Edit backend-anf.yaml `vim backend-azure-anf-advanced.json`
 - Example\
 <pre>
