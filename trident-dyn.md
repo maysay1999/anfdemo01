@@ -159,6 +159,6 @@ Copy 'az aks get-credentials…' on Azure Portal and paste to Trident VM
 - Verification of Deployment  `kubectl get deploy`
 - To have access to deployment `curl {ip_address}`
 - Login to pod  `kubectl exec -it nginx-pod -- /bin/bash`
-- Install curl  `apt update && apt install curl`  
+- Install curl  `apt update && apt install curl -y`  
 
 ---
