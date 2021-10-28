@@ -125,7 +125,7 @@ Copy 'az aks get-credentials…' on Azure Portal and paste to Trident VM
 - `kubectl apply -f anf-storageclass.yaml`
 - Name: azure-netapp-files
 - NFS
-- Verify `kubectl get sc azure-netapp-files`
+- Verify `kubectl get sc`
 
 ## 14. Create PVC (anf-pvc.yaml)
 - `kubectl apply -f anf-pvc.yaml`
