@@ -32,6 +32,20 @@ Use this command to create a clone of this site locally\
 ## 2. Create AKS cluster (anf-demo-aks-prework.azcli)
 - Resource group: anftest-rg
 - Cluster name: AnfCluster01
+<pre>
+az provider register --namespace Microsoft.NetApp
+az group create -n anftest-rg -l japaneast
+
+#RG={your_resourcce_group}
+az aks create \
+    -g anftest-rg \
+    -n AnfCluster01 \
+    -l japaneast \
+    --node-count 2 \
+    --generate-ssh-keys \
+    --node-vm-size Standard_B2s \
+    --enable-managed-identity
+</pre?>
 
 ## 3. Create ANF subnet and delegate the subnet for ANF (anf-create.sh)
 - Resource group for Nodes(VMs): MC_anftest-rg_AnfCluster01_japaneast
