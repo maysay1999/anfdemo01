@@ -33,12 +33,12 @@ Use this command to create a clone of this site locally\
 - Resource group: anftest-rg
 - Cluster name: AnfCluster01
 
-## 3. Create ANF subnet and delegate the subnet for ANF (anf_demo_create_subnet.azcli)
+## 3. Create ANF subnet and delegate the subnet for ANF (anf-create.sh)
 - Resource group for Nodes(VMs): MC_anftest-rg_AnfCluster01_japaneast
 - Vnet inside MC_anftest-rg_AnfCluster01_japaneast: aks-vnet-xxxxxxxx
 - ANF subnet: 10.0.0.0/26
 
-## 4. Create ANF account, pool and volume (anf_demo_create_pool_volume.azcli)
+## 4. Create ANF account, pool and volume (anf-create.sh)
 - ANF account: anfac01
 - Pool named mypool1: 4TB, Standard
 - Volume named myvol1: 100GB, NGFSv3
@@ -80,7 +80,7 @@ Copy 'az aks get-credentials…' on Azure Portal and paste to Trident VM
 - ~~Download codes `cd ~` `git clone https://github.com/maysay1999/anfdemo01.git AnfDemo01`~~
 - Verification  `kubectl get pod -n trident`
 
-## 9. Configure CSI
+## 9. Configure CSI (csi-install.sh)
 - `cd ~/AnfDemo01/astra`
 - `chmod 711 csi-install.sh`
 - `./csi-install.sh`
