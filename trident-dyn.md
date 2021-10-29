@@ -45,7 +45,7 @@ az aks create \
     --generate-ssh-keys \
     --node-vm-size Standard_B2s \
     --enable-managed-identity
-</pre?>
+</pre>
 
 ## 3. Create ANF subnet and delegate the subnet for ANF (anf-create.sh)
 - Resource group for Nodes(VMs): MC_anftest-rg_AnfCluster01_japaneast
