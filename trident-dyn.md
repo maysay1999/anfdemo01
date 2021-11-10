@@ -137,7 +137,7 @@ Copy 'az aks get-credentials…' on Azure Portal and paste to Trident VM
 </pre>
 
 ## 12. Create backend
-- cd to Trident `cd ~/trident-installer`
+- ~~cd to Trident `cd ~/trident-installer`~~
 - ~~`kubectl apply -f sample-input/backends-samples/azure-netapp-files/backend-anf.yaml -n trident`~~
 - ~~Verify `tridentctl -n trident create backend -f trident-installer/sample-input/backends-samples/azure-netapp-files/backend-anf.yaml`~~
 - Execute this command  `tridentctl create backend -f backend-azure-anf-advanced.json -n trident`
