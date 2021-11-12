@@ -37,8 +37,8 @@ git clone https://github.com/maysay1999/anfdemo01.git AnfDemo01
 - `kubectl apply -f setup-snapshot-controller.yaml`
 
 ## 5. Create Astra account
-- [Create Astra account](https://cloud.netapp.com/astra-register)
-- [Login on Astra](https://astra.netapp.io/)
+- [Create Astra account](https://cloud.netapp.com/astra-register)  Note) Right-click and open link in a new tab
+- [Login on Astra](https://astra.netapp.io/)  Note) Right-click and open link in a new tab
 
 ## 6. Create Astra Service Principal
 - Obtain the subscription ID  `az account show`
