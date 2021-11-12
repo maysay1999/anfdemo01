@@ -168,7 +168,7 @@ Copy 'az aks get-credentials…' on Azure Portal and paste to Trident VM
 - dd if=/dev/zero of=5m.dat bs=1024 count=5120
 
 ## 17. Create a deployment (nginx-deployment.yaml)
-- `kubectl apply -f nginx_deployment.yaml`
+- `kubectl apply -f nginx-deployment.yaml`
 - Verification of ReplicaSet  `kubectl get rs`
 - Verification of Deployment  `kubectl get deploy`
 - To have access to deployment `curl {ip_address}`
