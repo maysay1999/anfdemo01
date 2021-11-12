@@ -36,7 +36,11 @@ git clone https://github.com/maysay1999/anfdemo01.git AnfDemo01
 - `kubectl apply -f rbac-snapshot-controller.yaml`
 - `kubectl apply -f setup-snapshot-controller.yaml`
 
-## 5. Create Astra Service Principal
+## 5. Create Astra account
+- [Create Astra account](https://cloud.netapp.com/astra-register)
+- [Login on Astra](https://astra.netapp.io/)
+
+## 6. Create Astra Service Principal
 - Obtain the subscription ID  `az account show`
 - Create a new Service Principal `az ad sp create-for-rbac --name http://sp-astra-service-principal001 --role contributor --scopes /subscriptions/{SUBSCRIPTION_ID}`
 - Copy the outputed JSON\
@@ -49,20 +53,20 @@ git clone https://github.com/maysay1999/anfdemo01.git AnfDemo01
   "tenant": "588b175c-bf7e-491a-92e5-itsfakexxxxxx"\
 }   
 
-## 6. Install Help Chart Repository (anf-astra-helm.txt)
+## 7. Install Help Chart Repository (anf-astra-helm.txt)
 - `helm repo add bitnami https://charts.bitnami.com/bitnami`
 
-## 7. Install MariaDB only
+## 8. Install MariaDB only
 - Install `helm install astramaria bitnami/mariadb -n maria01 --create-namespace`
 - Verify `kubectl get po -n maria01`
 - Verify `kubectl get po -A`
 
-## 8. Install PostgreSQL only
+## 9. Install PostgreSQL only
 - Install `helm install astrapost bitnami/postgresql -n postgresql01 --create-namespace`
 - Verify `kubectl get po -n postgresql01`
 - Verify `kubectl get po -A`
 
-## 9. Install WordPress
+## 10. Install WordPress
 - Install `helm install astrawp bitnami/wordpress -n wp01 --create-namespace`
 - Verify `kubectl get po -n wp01`
 - Verify `kubectl get po -A`
