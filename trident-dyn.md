@@ -95,6 +95,7 @@ Copy 'az aks get-credentials…' on Azure Portal and paste to Trident VM
 - Verification  `kubectl get pod -n trident`
 
 ## 9. Configure CSI (csi-install.sh)
+- Use this command to create a clone of this site locally `git clone https://github.com/maysay1999/anfdemo01.git AnfDemo01`
 - `cd ~/AnfDemo01/astra`
 - `chmod 711 csi-install.sh`
 - `./csi-install.sh`
