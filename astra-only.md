@@ -9,7 +9,7 @@ kubectl describe node\
 kubectl get pod -o wide\
 kubectl get pod -n {namaespace}
 
-git clone https://github.com/maysay1999/anfdemo01.git AnfDemo01
+`git clone https://github.com/maysay1999/anfdemo01.git AnfDemo01`
 
 ## 1. Create AKS cluster (anf-demo-aks-prework.azcli)
 - Resource group: anftest-rg `az group create -n anftest-rg -l japaneast`
