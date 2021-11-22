@@ -33,10 +33,6 @@ Use this command to create a clone of this site locally\
 - Resource group: anftest-rg
 - Cluster name: AnfCluster01
 <pre>
-az provider register --namespace Microsoft.NetApp
-az group create -n anftest-rg -l japaneast
-
-#RG={your_resourcce_group}
 az aks create \
     -g anftest-rg \
     -n AnfCluster01 \
@@ -113,7 +109,7 @@ Copy 'az aks get-credentials…' on Azure Portal and paste to Trident VM
 
 ## 11. modify backend-azure-anf-advanced.json (backend-azure-anf-advanced.json)
 - ~~path: trident-installer/sample-input/backends-samples/azure-netapp-files/backend-anf.yaml `cd ~/trident-installer/sample-input/backends-samples/azure-netapp-files/`~~
-- `cd ~/AnfDemo01/astra`
+- `cd ~/AnfDemo01`
 - Edit backend-anf.yaml `vim backend-azure-anf-advanced.json`
 - Example
 <pre>
