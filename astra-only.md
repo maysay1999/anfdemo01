@@ -38,13 +38,16 @@ az aks create \
 *chmod 711 anf_demo_create_pool_volume.azcli*
 *./anf_demo_create_pool_volume.azcli*
 
-## 4. Configure CSI (container storage interface)
+## 4. Configure CSI (csi-install.sh)
+- Use this command to create a clone of this site locally `git clone https://github.com/maysay1999/anfdemo01.git AnfDemo01`
 - `cd ~/AnfDemo01/astra`
-- `kubectl apply -f snapshot.storage.k8s.io_volumesnapshotclasses.yaml`
-- `kubectl apply -f snapshot.storage.k8s.io_volumesnapshotcontents.yaml`
-- `kubectl apply -f snapshot.storage.k8s.io_volumesnapshots.yaml`
-- `kubectl apply -f rbac-snapshot-controller.yaml`
-- `kubectl apply -f setup-snapshot-controller.yaml`
+- `chmod 711 csi-install.sh`
+- `./csi-install.sh`
+- ~~`kubectl apply -f snapshot.storage.k8s.io_volumesnapshotclasses.yaml`~~
+- ~~`kubectl apply -f snapshot.storage.k8s.io_volumesnapshotcontents.yaml`~~
+- ~~`kubectl apply -f snapshot.storage.k8s.io_volumesnapshots.yaml`~~
+- ~~`kubectl apply -f rbac-snapshot-controller.yaml`~~
+- ~~`kubectl apply -f setup-snapshot-controller.yaml`~~
 
 ## 5. Create Astra account
 - [Create Astra account](https://cloud.netapp.com/astra-register)    Note) Right-click and open link in a new tab
