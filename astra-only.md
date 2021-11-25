@@ -38,7 +38,10 @@ az aks create \
 *chmod 711 anf_demo_create_pool_volume.azcli*
 *./anf_demo_create_pool_volume.azcli*
 
-## 4. Configure CSI (csi-install.sh)
+## 4. Get access credentials for a managed Kubernetes cluster
+`az aks get-credentials -n AnfCluster01 -g anftest-rg`
+
+## 5. Configure CSI (csi-install.sh)
 - Use this command to create a clone of this site locally `git clone https://github.com/maysay1999/anfdemo01.git AnfDemo01`
 - `cd ~/AnfDemo01/astra`
 - `chmod 711 csi-install.sh`
@@ -49,12 +52,12 @@ az aks create \
 - ~~`kubectl apply -f rbac-snapshot-controller.yaml`~~
 - ~~`kubectl apply -f setup-snapshot-controller.yaml`~~
 
-## 5. Create Astra account
+## 6. Create Astra account
 - [Register Astra account](https://cloud.netapp.com/astra-register)    Note) Right-click and open link in a new tab
 - [Create login password](https://astra.netapp.io/)    Note) Right-click and open link in a new tab, , and click **"Sign Up"**. (Do NOT click "LOGIN")
 - [Login on Astra](https://astra.netapp.io/)   Clickc this link to login
 
-## 6. Create Astra Service Principal
+## 7. Create Astra Service Principal
 - Obtain the subscription ID  `az account show`
 - Create a new Service Principal `az ad sp create-for-rbac --name http://sp-astra-service-principal001 --role contributor --scopes /subscriptions/{SUBSCRIPTION_ID}`
 - Copy the outputed JSON\
@@ -67,22 +70,29 @@ az aks create \
   "tenant": "588b175c-bf7e-491a-92e5-itsfakexxxxxx"\
 }   
 
-## 7. Install Help Chart Repository (anf-astra-helm.txt)
+## 8. Install Help Chart Repository (anf-astra-helm.txt)
 - `helm repo add bitnami https://charts.bitnami.com/bitnami`
 
-## 8. Install MariaDB only
+## 9. Install MariaDB only
 - Install `helm install astramaria bitnami/mariadb -n maria01 --create-namespace`
 - Verify `kubectl get po -n maria01`
 - Verify `kubectl get po -A`
 
-## 9. Install PostgreSQL only
+## 10. Install PostgreSQL only
 - Install `helm install astrapost bitnami/postgresql -n postgresql01 --create-namespace`
 - Verify `kubectl get po -n postgresql01`
 - Verify `kubectl get po -A`
 
-## 10. Install WordPress
+## 11. Install WordPress
 - Install `helm install astrawp bitnami/wordpress -n wp01 --create-namespace`
 - Verify `kubectl get po -n wp01`
 - Verify `kubectl get po -A`
+
+## 12. View status of created PV
+`kubectl get pv -A`
+
+## 13. Backup maria01 and restore from Astra Backup
+- Delete command `kubectl delete ns maria01`
+- Verify after restoration `kubectl get po -A`
 
 ---
