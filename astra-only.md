@@ -52,7 +52,7 @@ az aks create \
 ## 5. Create Astra account
 - [Register Astra account](https://cloud.netapp.com/astra-register)    Note) Right-click and open link in a new tab
 - [Create login password](https://astra.netapp.io/)    Note) Right-click and open link in a new tab, , and click **"Sign Up"**. (Do NOT click "LOGIN")
-- [Login on Astra](https://astra.netapp.io/)
+- [Login on Astra](https://astra.netapp.io/)   Clickc this link to login
 
 ## 6. Create Astra Service Principal
 - Obtain the subscription ID  `az account show`
