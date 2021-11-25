@@ -14,13 +14,23 @@ kubectl get pod -n {namaespace}
 ## 1. Create AKS cluster (anf-demo-aks-prework.azcli)
 - Resource group: anftest-rg `az group create -n anftest-rg -l japaneast`
 - Cluster name: AnfCluster01
+<pre>
+az aks create \
+    -g anftest-rg \
+    -n AnfCluster01 \
+    -l japaneast \
+    --node-count 2 \
+    --generate-ssh-keys \
+    --node-vm-size Standard_B2s \
+    --enable-managed-identity
+</pre>
 
-## 2. Create ANF subnet and delegate the subnet for ANF (anf_demo_create_subnet.azcli)
+## 2. Create ANF subnet and delegate the subnet for ANF (anf-create.sh)
 - Resource group for Nodes(VMs): MC_anftest-rg_AnfCluster01_japaneast
 - Vnet inside MC_anftest-rg_AnfCluster01_japaneast: aks-vnet-xxxxxxxx
 - ANF subnet: 10.0.0.0/26
 
-## 3. Create ANF account, pool and volume (anf_demo_create_pool_volume.azcli)
+## 3. Create ANF account, pool and volume (anf-create.sh)
 - ANF account: anfac01
 - Pool named mypool1: 4TB, Standard
 - Volume named myvol1: 100GB, NGFSv3
