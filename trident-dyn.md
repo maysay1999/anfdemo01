@@ -159,10 +159,13 @@ Copy 'az aks get-credentials…' on Azure Portal and paste to Trident VM
 - Mount path: /mnt/data
 - Storage 1TiB. RWX
 
-## 16. View mounted status and Snapshot
-- df -h
-- mount
-- dd if=/dev/zero of=5m.dat bs=1024 count=5120
+## 16. Have access to the pods to view mounted status and Snapshot
+- Have access with pod  `kubectl exec -it nginx-pod -- /bin/bash`
+- `df -h` *view mount status*
+- `mount` *view mount status*
+- `apt update`
+- `apt install -y wget` *Install wget*
+- `dd if=/dev/zero of=5m.dat bs=1024 count=5120` *create 5MB test file*
 
 ## 17. Create a deployment (nginx-deployment.yaml)
 - `kubectl apply -f nginx-deployment.yaml`
