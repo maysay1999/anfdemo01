@@ -104,7 +104,7 @@ Copy 'az aks get-credentials…' on Azure Portal and paste to Trident VM
 ## 10. Create Service Principal
 - Creaete a new SP named "http://netapptridentxxx" `az ad sp create-for-rbac --name "http://netapptridentxxx"`
 - Take note of the output json. 
-- Gain Subection ID `az acounnt show`
+- Gain Subection ID `az account show`
 - Take note of the output json. 
 
 ## 11. modify backend-azure-anf-advanced.json (backend-azure-anf-advanced.json)
