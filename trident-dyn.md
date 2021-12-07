@@ -6,6 +6,8 @@ K8s cheatsheet(https://kubernetes.io/docs/reference/kubectl/cheatsheet/)
 ### **Static Provisioning** ==> 1) pv 2) pvc 3) pod
 ### **Dynamic Provisioning** ==> 1) sc 2) pvc 3) pod
 
+[View hands-on diagram](https://github.com/maysay1999/anfdemo01/blob/main/diagram/211118_hands-on_diagram_aks_nfs.pdf)
+
 Examples)\
 kubectl get no\
 kubectl get nodes -o wide\
