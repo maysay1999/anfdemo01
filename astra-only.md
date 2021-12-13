@@ -1,13 +1,6 @@
 # Azure NetApp Files Hands-on Session: Astra only
 
-K8s cheatsheet(https://kubernetes.io/docs/reference/kubectl/cheatsheet/)
-
-ex)\
-kubectl get node\
-kubectl get node -o wide\
-kubectl describe node\
-kubectl get pod -o wide\
-kubectl get pod -n {namaespace}
+![Architecture and components](https://docs.netapp.com/us-en/astra-control-service/media/learn/astra-cc-arch2.png)
 
 `git clone https://github.com/maysay1999/anfdemo01.git AnfDemo01`
 
