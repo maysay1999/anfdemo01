@@ -21,7 +21,7 @@ kubectl get pvc\
 kubectl get sc\
 kubectl get svc\
 kubectl apply -f {name}.yaml\
-kubectl delete -f {name}.yaml\
+kubectl delete -f {name}.yaml
 
 kubectl get po -n <namespace>\
 kubectl get po --all-namespaces\ 
