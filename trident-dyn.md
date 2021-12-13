@@ -13,7 +13,7 @@ kubectl get no\
 kubectl get nodes -o wide\
 kubectl describe node\
 kubectl get po -o wide\
-kubectl get namespaces -o wide
+kubectl get namespaces -o wide\
 kubectl get ns {name}\
 kubectl get deploy\
 kubectl get pv\
@@ -21,7 +21,11 @@ kubectl get pvc\
 kubectl get sc\
 kubectl get svc\
 kubectl apply -f {name}.yaml\
-kubectl delete -f {name}.yaml
+kubectl delete -f {name}.yaml\
+
+kubectl get po -n <namespace>\
+kubectl get po --all-namespaces\ 
+kubectl get po -A
 
 Use this command to create a clone of this site locally\
 `git clone https://github.com/maysay1999/anfdemo01.git AnfDemo01`
