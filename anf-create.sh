@@ -34,6 +34,8 @@ az netappfiles volume create \
     --service-level Standard \
     --vnet $MCVNET \
     --subnet netapp-subnet \
+    --allowed-clients 0.0.0.0/0 \
+    --rule-index 1 \
     --usage-threshold 100 \
     --file-path nfspath01 \
     --protocol-types NFSv3
