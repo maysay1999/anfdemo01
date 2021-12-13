@@ -10,11 +10,11 @@ K8s cheatsheet(https://kubernetes.io/docs/reference/kubectl/cheatsheet/)
 
 Examples)\
 kubectl get no\
-kubectl get nodes -o wide\
-kubectl describe node\
-kubectl get po -o wide\
-kubectl get namespaces -o wide\
-kubectl get ns {name}\
+kubectl get no -o wide\
+kubectl get no -w\
+kubectl describe no\
+kubectl get po\
+kubectl get ns\
 kubectl get deploy\
 kubectl get pv\
 kubectl get pvc\
