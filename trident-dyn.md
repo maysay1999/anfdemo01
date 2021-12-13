@@ -23,8 +23,8 @@ kubectl get svc\
 kubectl apply -f {name}.yaml\
 kubectl delete -f {name}.yaml
 
-kubectl get po -n <namespace>\
-kubectl get po --all-namespaces\ 
+kubectl get po -n {namespace}\
+kubectl get po --all-namespaces\
 kubectl get po -A
 
 Use this command to create a clone of this site locally\
