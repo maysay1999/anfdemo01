@@ -1,6 +1,8 @@
 # Azure NetApp Files Hands-on Session: Dynamic Provisioning with Trident interact Ubuntu VM
 
-K8s cheatsheet(https://kubernetes.io/docs/reference/kubectl/cheatsheet/)
+Reference: 
+[K8s cheatsheet](https://kubernetes.io/docs/reference/kubectl/cheatsheet/)
+[Tridnet](https://netapp.io/persistent-storage-provisioner-for-kubernetes/)
 
 ### **Procedure different between Static Provisioning and Dynamic Provisioning**
 ### **Static Provisioning** ==> 1) pv 2) pvc 3) pod
