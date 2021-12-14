@@ -77,8 +77,7 @@ sudo apt install git-all -y
 ## 6. az login to Azure on Trident VM
 - `az login --use-device-code`
 - `https://microsoft.com/devicelogin`
-- Verify with this command `kubectl get deployments --all-namespaces=true`
-- Set as default account `az account set -s SUBSCRIPTION_ID`
+- Set as default account `az account set -s SUBSCRIPTION_ID` if necessary
 
 ## 7. Connect AKS cluster to Trident VM
 Copy 'az aks get-credentials…' on Azure Portal and paste to Trident VM
@@ -105,7 +104,7 @@ Copy 'az aks get-credentials…' on Azure Portal and paste to Trident VM
 - ~~`kubectl apply -f rbac-snapshot-controller.yaml`~~
 - ~~`kubectl apply -f setup-snapshot-controller.yaml`~~\
 or\
-`tridentctl install -n trident --csi` 
+~~`tridentctl install -n trident --csi` ~~
 
 ## 10. Create Service Principal
 - Creaete a new SP named "http://netapptridentxxx" `az ad sp create-for-rbac --name "http://netapptridentxxx"`
