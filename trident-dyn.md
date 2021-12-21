@@ -104,7 +104,7 @@ Copy 'az aks get-credentials…' on Azure Portal and paste to Trident VM
 - ~~`kubectl apply -f rbac-snapshot-controller.yaml`~~
 - ~~`kubectl apply -f setup-snapshot-controller.yaml`~~\
 or\
-~~`tridentctl install -n trident --csi` ~~
+- ~~`tridentctl install -n trident --csi` ~~
 
 ## 10. Create Service Principal
 - Creaete a new SP named "http://netapptridentxxx" `az ad sp create-for-rbac --name "http://netapptridentxxx"`
