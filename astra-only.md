@@ -1,7 +1,7 @@
 # Azure NetApp Files Hands-on Session: Astra only
 
 **Architecture and components**
-![Architecture and components](https://docs.netapp.com/us-en/astra-control-service/media/learn/astra-cc-arch2.png)
+![Architecture and components](https://docs.netapp.com/us-en/astra-control-service/media/learn/astra-cc-arch2.png)\
 [Download Astra (ACS) manual](https://docs.netapp.com/us-en/astra-control-service/pdfs/fullsite-sidebar/Astra_Control_Service_documentation.pdf)
 
 `git clone https://github.com/maysay1999/anfdemo01.git AnfDemo01`
