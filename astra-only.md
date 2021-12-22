@@ -6,7 +6,7 @@
 
 `git clone https://github.com/maysay1999/anfdemo01.git AnfDemo01`
 
-## 1. Create AKS cluster (anf-demo-aks-prework.azcli)
+## 1. Create AKS cluster
 - Resource group: anftest-rg `az group create -n anftest-rg -l japaneast`
 - Cluster name: AnfCluster01
 <pre>
