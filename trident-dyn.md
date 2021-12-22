@@ -169,7 +169,8 @@ or\
 - `df -h` *view mount status*
 - `mount` *view mount status*
 - `apt update`
-- `apt install -y wget` *Install wget*
+- `apt install -y vim` *Install vim*
+- Open VIM and create test.txt or `echo "this is test" > test.txt`
 - `dd if=/dev/zero of=5m.dat bs=1024 count=5120` *create 5MB test file*
 
 ## 17. Create a deployment (nginx-deployment.yaml)
