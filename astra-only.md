@@ -94,4 +94,21 @@ az aks create \
 - Delete command `kubectl delete ns maria01`
 - Verify after restoration `kubectl get po -A`
 
+## 14. Create one more Bucket for Disaster Recovery
+<pre>
+az storage account create \
+    -n astrabuckets002 \
+    -g astra-backup-rg \
+    --kind BlockBlobStorage \
+    -l southeastasia  \
+    --sku Premium_ZRS
+az storage account keys list  --resource-group astra-backup-rg  --account-name astrabuckets002
+az storage container create  --name astrafastbucket \
+    --account-name astrabuckets002 \
+    --account-key s4c6u21XzELk83cjN0pMpTsbJWP1XMv+kSbynitmENMMHDnjhYktIbwvCMJAZK1/W+F/z8fJjvbVyvlgnRFYFAKE
+</pre>
+
+## 15. Understand Define feature
+To be continued
+
 ---
