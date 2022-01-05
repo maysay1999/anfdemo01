@@ -36,6 +36,7 @@ Use this command to create a clone of this site locally\
 ## 2. Create AKS cluster
 - Resource group: anftest-rg
 - Cluster name: AnfCluster01
+- Node count: 3
 <pre>
 az aks create \
     -g anftest-rg \
