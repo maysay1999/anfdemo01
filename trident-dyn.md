@@ -31,7 +31,7 @@ Use this command to create a clone of this site locally\
 
 ## 1. Create Ubuntu VM for Trident
 - Create a new resource group (anf-demo-aks-prework.azcli)  `az group create -n anftest-rg -l japaneast`
-- Create Ubuntu VM [ARM for Ubuntu](https://github.com/maysay1999/anfdemo01/tree/main/trident)
+- Create Ubuntu VM [ARM for Ubuntu](https://github.com/maysay1999/anfdemo01/tree/main/trident) (right-click on this link)
 
 ## 2. Create AKS cluster
 - Resource group: anftest-rg
