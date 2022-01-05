@@ -163,7 +163,7 @@ or\
 - `kubectl apply -f anf-nginx-pod.yaml`
 - CPU 100m, Mem 128Mi
 - Mount path: /mnt/data
-- Storage 1TiB. RWX
+- Storage 100GiB. RWX
 
 ## 16. Have access to the pods to view mounted status and Snapshot
 - Have access with pod  `kubectl exec -it nginx-pod -- /bin/bash`
