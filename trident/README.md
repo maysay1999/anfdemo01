@@ -1,4 +1,4 @@
-# Create a new Ububtu VM for Trident 
+# Create a new Ubuntu VM for Trident 
 
 This template will deploy a new Ubuntu VM as Trident interact server. 
 
