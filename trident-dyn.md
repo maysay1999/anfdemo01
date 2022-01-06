@@ -108,7 +108,7 @@ or\
 ~~`tridentctl install -n trident --csi`~~
 
 ## 10. Create Service Principal
-- Creaete a new SP named "http://netapptridentxxx" `az ad sp create-for-rbac --name "http://netapptridentxxx"`
+- Creaete a new SP named "http://netapptridentxxx" `az ad sp create-for-rbac --name "http://netapptridentxxx" --role contributor --scopes /subscriptions/{SUBSCRIPTION_ID}`
 - Take note of the output json. 
 - Gain Subection ID `az account show`
 - Take note of the output json. 
