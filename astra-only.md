@@ -78,7 +78,7 @@ az aks create \
 
 ## 8. Ensure that ANF is set as default storage service
 
-- Storage Class of ANF Standard: netapp-anf-perf-standard
+- Storage Class of ANF Standard: netapp-anf-perf-standard\
 `kubectl patch storageclass netapp-anf-perf-standard -p '{"metadata": {"annotations":{"storageclass.kubernetes.io/is-default-class":"true"}}}'`
 
 ## 9. Install Help Chart Repository (anf-astra-helm.txt)
