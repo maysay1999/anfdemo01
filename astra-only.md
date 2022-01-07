@@ -96,7 +96,7 @@ On Astra --> Clusters --> Storage --> Storage Class --> Choose "netapp-anf-perf-
 - Verify `kubectl get po -n maria01`
 - Verify `kubectl get po -A`
 
-Note) In case of uninstallation, use this. `helm uninstall astramaria -n maria01`
+Note) In case of uninstallation, use *helm uninstall*. `helm uninstall astramaria -n maria01`
 
 ## 11. Install PostgreSQL only
 
@@ -104,7 +104,7 @@ Note) In case of uninstallation, use this. `helm uninstall astramaria -n maria01
 - Verify `kubectl get po -n postgresql01`
 - Verify `kubectl get po -A`
 
-Note) In case of uninstallation, use this. `helm uninstall astrapost -n postgresql01`
+Note) In case of uninstallation, use *helm uninstall*. `helm uninstall astrapost -n postgresql01`
 
 ## 12. Install WordPress
 
@@ -112,7 +112,7 @@ Note) In case of uninstallation, use this. `helm uninstall astrapost -n postgres
 - Verify `kubectl get po -n wp01`
 - Verify `kubectl get po -A`
 
-Note) In case of uninstallation, use this. `helm uninstall astrawp -n wp01`
+Note) In case of uninstallation, use *helm uninstall*. `helm uninstall astrawp -n wp01`
 
 ## 13. View status of created PV
 `kubectl get pv -A`
