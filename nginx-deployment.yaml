@@ -6,7 +6,7 @@ metadata:
     app: nginx-anf-trident
     deploymethod: trident
 spec:
-  replicas: 2
+  replicas: 5
   selector:
     matchLabels:
       app: nginx-anf-trident
@@ -19,8 +19,6 @@ spec:
       containers:
       - name: nginx
         image: nginx
-        ports:
-        - containerPort: 80
         volumeMounts:
         - name: disk01
           mountPath: /usr/share/nginx/html
