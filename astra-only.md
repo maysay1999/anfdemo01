@@ -15,7 +15,7 @@ az aks create \
     -g anftest-rg \
     -n AnfCluster01 \
     -l japaneast \
-    --node-count 2 \
+    --node-count 3 \
     --generate-ssh-keys \
     --node-vm-size Standard_B2s \
     --enable-managed-identity
