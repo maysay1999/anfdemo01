@@ -82,6 +82,9 @@ az aks create \
 `kubectl patch storageclass netapp-anf-perf-standard -p '{"metadata": {"annotations":{"storageclass.kubernetes.io/is-default-class":"true"}}}'`
 - Set ANF Standard as default StorageClass (GUI)\
 On Astra --> Clusters --> Storage --> Storage Class --> Choose "netapp-anf-perf-standard" --> Actions --> Set as default
+- Delete the Storage Class named 'default"\
+`kubectl delete sc default`\
+`kubectl get sc`
 
 ## 9. Install Help Chart Repository (anf-astra-helm.txt)
 
@@ -93,17 +96,23 @@ On Astra --> Clusters --> Storage --> Storage Class --> Choose "netapp-anf-perf-
 - Verify `kubectl get po -n maria01`
 - Verify `kubectl get po -A`
 
+Note) In case of uninstallation, use this. `helm uninstall astramaria -n maria01`
+
 ## 11. Install PostgreSQL only
 
 - Install `helm install astrapost bitnami/postgresql -n postgresql01 --create-namespace`
 - Verify `kubectl get po -n postgresql01`
 - Verify `kubectl get po -A`
 
+Note) In case of uninstallation, use this. `helm uninstall astrapost -n postgresql01`
+
 ## 12. Install WordPress
 
 - Install `helm install astrawp bitnami/wordpress -n wp01 --create-namespace`
 - Verify `kubectl get po -n wp01`
 - Verify `kubectl get po -A`
+
+Note) In case of uninstallation, use this. `helm uninstall astrawp -n wp01`
 
 ## 13. View status of created PV
 `kubectl get pv -A`
