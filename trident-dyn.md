@@ -7,6 +7,7 @@ Reference:\
 
 ### Userful commands
 Examples)\
+kubectl version\
 kubectl get no\
 kubectl get no -o wide\
 kubectl get no -w\
