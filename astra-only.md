@@ -89,6 +89,7 @@ On Astra --> Clusters --> Storage --> Storage Class --> Choose "netapp-anf-perf-
 ## 9. Install Help Chart Repository (anf-astra-helm.txt)
 
 - `helm repo add bitnami https://charts.bitnami.com/bitnami`
+- `helm search repo bitnami`: You can find the names of the charts in repositories you have already added
 
 ## 10. Install MariaDB only
 
