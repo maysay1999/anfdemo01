@@ -65,7 +65,7 @@ az aks create \
 ## 7. Create Astra Service Principal
 
 - Obtain the subscription ID  `az account show`
-- Create a new Service Principal `az ad sp create-for-rbac --name http://sp-astra-service-principal001 --role contributor --scopes /subscriptions/{SUBSCRIPTION_ID}`
+- Create a new Service Principal `az ad sp create-for-rbac --name http://sp-astra-service-principalxxx --role contributor --scopes /subscriptions/{SUBSCRIPTION_ID}`
 - Copy the outputed JSON\
 *Example of JSON*\
 {\
