@@ -175,12 +175,12 @@ or\
 - Open VIM and create test.txt or `echo "this is test" > test.txt`
 - `dd if=/dev/zero of=5m.dat bs=1024 count=5120` *create 5MB test file*
 
-## 17. Create a deployment (nginx-deployment.yaml)
-- `kubectl apply -f nginx-deployment.yaml`
-- Verification of ReplicaSet  `kubectl get rs`
-- Verification of Deployment  `kubectl get deploy`
-- To have access to deployment `curl {ip_address}`
-- Login to pod  `kubectl exec -it nginx-pod -- /bin/bash`
-- Install curl  `apt update && apt install curl -y`  
+~~## 17. Create a deployment (nginx-deployment.yaml)~~
+~~- `kubectl apply -f nginx-deployment.yaml`~~
+~~- Verification of ReplicaSet  `kubectl get rs`~~
+~~- Verification of Deployment  `kubectl get deploy`~~
+~~- To have access to deployment `curl {ip_address}`~~
+~~- Login to pod  `kubectl exec -it nginx-pod -- /bin/bash`~~
+~~- Install curl  `apt update && apt install curl -y`~~  
 
 ---
