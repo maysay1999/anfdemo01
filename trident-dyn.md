@@ -175,16 +175,20 @@ kubectl get po -A
 
 ```Bash
 vim ~/.bashrc
+source ~/.bashrc
 ```
 
 ![add alias](https://github.com/maysay1999/anfdemo01/blob/main/images/alias.jpg)
 
 ## 9. Create Service Principal
 
-* Creaete a new SP named "http://netapptridentxxx" `az ad sp create-for-rbac --name "http://netapptridentxxx" --role contributor --scopes /subscriptions/{SUBSCRIPTION_ID}`
-* Take note of the output json.
-* Gain Subection ID `az account show`
-* Take note of the output json.
+* Creaete a new SP named "http://netapptridentxxx".  Output such as AppID and Password shall be written on notepad.  
+
+```Bash
+az ad sp create-for-rbac --name "http://netapptridentxxx" \
+  --role contributor \
+  --scopes /subscriptions/{your_SUBSCRIPTION_ID}
+```
 
 ## 10. modify backend-azure-anf-advanced.json (backend-azure-anf-advanced.json)
 
