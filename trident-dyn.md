@@ -220,7 +220,7 @@ cd ~/AnfDemo01
 kubectl apply -f anf-storageclass.yaml
 ```
 
-> **Verify *`kubectl get sc`
+> **Verify** `k get sc`
 
 ## 13. Create PVC (anf-pvc.yaml)
 
