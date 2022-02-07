@@ -69,7 +69,7 @@ Run this shell:
 ./anf-create.sh
 ```
 
-## 5. Install kubectl, helm, az cli and git
+## 4. Install kubectl, helm, az cli and git
 
 - Install kubectl, helm, az cli and git on Ubuntu Jump Host
 
@@ -81,19 +81,22 @@ curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash && \
 sudo apt install git-all -y
 ```
 
-## 6. az login to Azure on Trident VM
+## 5. az login to Azure on Trident VM
 
 ```bash
 az login --tenant {your_tenant_name}
 ```
 
-Note) In most of the cases, <span style="color:blue">'--tenant'</span> can be omitted. 
+Note) In most of the cases, *'--tenant'* can be omitted.  Tenant name can be viiew with `az account show`.  
 
 
-## 7. Connect AKS cluster to Trident VM
+## 6. Connect AKS cluster to Trident VM
+
+
 Copy 'az aks get-credentials…' on Azure Portal and paste to Trident VM
 
-## 8. Install Trident 
+## 7. Install Trident 
+
 - Download Trident `curl -L -O -C - https://github.com/NetApp/trident/releases/download/v21.07.2/trident-installer-21.07.2.tar.gz`
 - Extract tar `tar xzvf trident-installer-21.07.2.tar.gz`
 - Copy tridentctl to /usr/bin/  `cd trident-installer`  `sudo cp tridentctl /usr/local/bin/`
@@ -104,7 +107,8 @@ Copy 'az aks get-credentials…' on Azure Portal and paste to Trident VM
 - ~~Download codes `cd ~` `git clone https://github.com/maysay1999/anfdemo01.git AnfDemo01`~~
 - Verification  `kubectl get pod -n trident`
 
-## 9. Configure CSI (csi-install.sh)
+## 8. Configure CSI (csi-install.sh)
+
 - Back to home directory: `cd`
 - Use this command to create a clone of this site locally `git clone https://github.com/maysay1999/anfdemo01.git AnfDemo01`
 - `cd ~/AnfDemo01/astra`
@@ -118,18 +122,19 @@ Copy 'az aks get-credentials…' on Azure Portal and paste to Trident VM
 or\
 ~~`tridentctl install -n trident --csi`~~
 
-## 10. Create Service Principal
+## 9. Create Service Principal
+
 - Creaete a new SP named "http://netapptridentxxx" `az ad sp create-for-rbac --name "http://netapptridentxxx" --role contributor --scopes /subscriptions/{SUBSCRIPTION_ID}`
 - Take note of the output json. 
 - Gain Subection ID `az account show`
 - Take note of the output json. 
 
-## 11. modify backend-azure-anf-advanced.json (backend-azure-anf-advanced.json)
+## 10. modify backend-azure-anf-advanced.json (backend-azure-anf-advanced.json)
+
 - ~~path: trident-installer/sample-input/backends-samples/azure-netapp-files/backend-anf.yaml `cd ~/trident-installer/sample-input/backends-samples/azure-netapp-files/`~~
 - `cd ~/AnfDemo01`
 - Edit backend-anf.yaml `vim backend-azure-anf-advanced.json`
 - Example
-<pre>
 {
     "version": 1,
     "storageDriverName": "azure-netapp-files",
@@ -148,35 +153,39 @@ or\
         "size": "100Gi"
     }
 }
-</pre>
 
-## 12. Create backend
+## 11. Create backend
+
 - ~~cd to Trident `cd ~/trident-installer`~~
 - ~~`kubectl apply -f sample-input/backends-samples/azure-netapp-files/backend-anf.yaml -n trident`~~
 - ~~Verify `tridentctl -n trident create backend -f trident-installer/sample-input/backends-samples/azure-netapp-files/backend-anf.yaml`~~
 - Execute this command  `tridentctl create backend -f backend-azure-anf-advanced.json -n trident`
 
-## 13. Create StorageClass (anf-storageclass.yaml)
+## 12. Create StorageClass (anf-storageclass.yaml)
+
 - cd to AnfDemo01 `cd ~/AnfDemo01`
 - `kubectl apply -f anf-storageclass.yaml`
 - Name: azure-netapp-files
 - NFS
 - Verify `kubectl get sc`
 
-## 14. Create PVC (anf-pvc.yaml)
+## 13. Create PVC (anf-pvc.yaml)
+
 - `kubectl apply -f anf-pvc.yaml`
 - Name: anf-pvc
 - SC name: azure-netapp-files
 - Storage 1TiB. RWX
 - Verify `kubectl get pvc anf-pvc`
 
-## 15. Create a pod (anf-nginx-pod.yaml)
+## 14. Create a pod (anf-nginx-pod.yaml)
+
 - `kubectl apply -f anf-nginx-pod.yaml`
 - CPU 100m, Mem 128Mi
 - Mount path: /mnt/data
 - Storage 100GiB. RWX
 
-## 16. Have access to the pods to view mounted status and Snapshot
+## 15. Have access to the pods to view mounted status and Snapshot
+
 - Have access with pod  `kubectl exec -it nginx-pod -- /bin/bash`
 - `df -h` *view mount status*
 - `mount` *view mount status*
@@ -185,7 +194,7 @@ or\
 - Open VIM and create test.txt or `echo "this is test" > test.txt`
 - `dd if=/dev/zero of=5m.dat bs=1024 count=5120` *create 5MB test file*
 
-~~## 17. Create a deployment (nginx-deployment.yaml)~~
+~~## 16. Create a deployment (nginx-deployment.yaml)~~
 ~~- `kubectl apply -f nginx-deployment.yaml`~~
 ~~- Verification of ReplicaSet  `kubectl get rs`~~
 ~~- Verification of Deployment  `kubectl get deploy`~~
