@@ -27,12 +27,19 @@ kubectl get po --all-namespaces\
 kubectl get po -A
 
 Use this command to create a clone of this site locally\
-`git clone https://github.com/maysay1999/anfdemo01.git AnfDemo01`
+```bash
+git clone https://github.com/maysay1999/anfdemo01.git AnfDemo01
+```
 
 
 ## 1. Create Ubuntu VM for Trident
 
-- Create a new resource group: `az group create -n anftest-rg -l japaneast`
+- Create a new resource group: 
+
+```bash
+az group create -n anftest-rg -l japaneast
+```
+
 - Create Ubuntu VM [ARM for Ubuntu](https://github.com/maysay1999/anfdemo01/tree/main/trident) (right-click on this link)
 
 ## 2. Create AKS cluster
@@ -64,7 +71,7 @@ Run this shell:
 
 ## 5. Install kubectl, helm, az cli and git
 
-- Install kubectl, helm, az cli and git
+- Install kubectl, helm, az cli and git on Ubuntu Jump Host
 
 ```bash
 sudo apt update && \
@@ -76,9 +83,12 @@ sudo apt install git-all -y
 
 ## 6. az login to Azure on Trident VM
 
-- `az login --use-device-code`
-- `https://microsoft.com/devicelogin`
-- Set as default account `az account set -s SUBSCRIPTION_ID` if necessary
+```bash
+az login --tenant {your_tenant_name}
+```
+
+Note) In most of the cases, <span style="color:blue">'--tenant'</span> can be omitted. 
+
 
 ## 7. Connect AKS cluster to Trident VM
 Copy 'az aks get-credentials…' on Azure Portal and paste to Trident VM
