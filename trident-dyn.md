@@ -87,7 +87,7 @@ sudo apt install git-all -y
 az login --tenant {your_tenant_name}
 ```
 
-Note) In most of the cases, *'--tenant'* can be omitted.  Tenant name can be viiew with `az account show`.  
+> **Note**: In most of the cases, *'--tenant'* can be omitted.  Tenant name can be viiew with `az account show`.  
 
 
 ## 6. Connect AKS cluster to Trident VM
