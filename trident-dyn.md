@@ -284,6 +284,10 @@ cat test.txt
 ls -lah 5m.dat
 ```
 
+## History
+
+CHANGELOG.md will be created soon.
+
 ~~## 16. Create a deployment (nginx-deployment.yaml)~~
 ~~- `kubectl apply -f nginx-deployment.yaml`~~
 ~~- Verification of ReplicaSet  `kubectl get rs`~~
