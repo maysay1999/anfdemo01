@@ -146,12 +146,24 @@ cd trident-installer
 sudo cp tridentctl /usr/local/bin/
 ```
 
-* Create a Trident Namespace `kubectl create ns trident`
-* Install trident with helm `cd helm` and then `helm install trident trident-operator-21.07.2.tgz -n trident`
-* ~~Deploy Trident operator `kubectl apply -f trident-installer/deploy/bundle.yaml -n trident`~~
-* ~~Create a TridentOrchestrator `kubectl apply -f trident-installer/deploy/crds/tridentorchestrator_cr.yaml` and `kubectl describe torc trident` to verify~~
-* ~~Download codes `cd ~` `git clone https://github.com/maysay1999/anfdemo01.git AnfDemo01`~~
-* Verification  `kubectl get pod -n trident`
+* Create a new namespace, trident
+
+```Bash
+kubectl create ns trident
+```
+
+* Install trident with helm 
+
+```Bash
+cd helm
+helm install trident trident-operator-22.01.0.tgz -n trident
+```
+
+* Verify trident oprator and CSI pods are running in *trident* namespace
+
+```Bash
+kubectl get pod -A
+```
 
 ## 8. Configure CSI (csi-install.sh)
 
