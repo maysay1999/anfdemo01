@@ -15,7 +15,7 @@
       "value": null
     },
     "dnsLabelPrefix": {
-      "value": "[toLower(format('simplelinuxvm-{0}', uniqueString(resourceGroup().id)))]"
+      "value": "Please put a unique name here"
     },
     "ubuntuOSVersion": {
       "value": "18.04-LTS"
