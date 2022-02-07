@@ -42,7 +42,7 @@
     },
     "dnsLabelPrefix": {
       "type": "string",
-      "defaultValue": "Please put a unique DNS Name for the Public IP",
+      "defaultValue": "PleasePutYourNameHere",
       "metadata": {
         "description": "Unique DNS Name for the Public IP used to access the Virtual Machine."
       }
