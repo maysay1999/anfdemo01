@@ -31,14 +31,17 @@ Use this command to create a clone of this site locally\
 
 
 ## 1. Create Ubuntu VM for Trident
-- Create a new resource group (anf-demo-aks-prework.azcli)  `az group create -n anftest-rg -l japaneast`
+
+- Create a new resource group: `az group create -n anftest-rg -l japaneast`
 - Create Ubuntu VM [ARM for Ubuntu](https://github.com/maysay1999/anfdemo01/tree/main/trident) (right-click on this link)
 
 ## 2. Create AKS cluster
+
 - Resource group: anftest-rg
 - Cluster name: AnfCluster01
 - Node count: 3
-<pre>
+
+```bash
 az aks create \
     -g anftest-rg \
     -n AnfCluster01 \
@@ -47,36 +50,28 @@ az aks create \
     --generate-ssh-keys \
     --node-vm-size Standard_B2s \
     --enable-managed-identity
-</pre>
+```
+## 3. Create ANF account, pool and volume (anf-create.sh)
 
-## 3. Create ANF subnet and delegate the subnet for ANF (anf-create.sh)
-- Resource group for Nodes(VMs): MC_anftest-rg_AnfCluster01_japaneast
-- Vnet inside MC_anftest-rg_AnfCluster01_japaneast: aks-vnet-xxxxxxxx
-- ANF subnet: 10.0.0.0/26
-
-## 4. Create ANF account, pool and volume (anf-create.sh)
 - ANF account: anfac01
 - Pool named mypool1: 4TB, Standard
 - Volume named myvol1: 100GB, NGFSv3
-*Running as shell is easier.*
-*chmod 711 anf_demo_create_pool_volume.azcli*
-*./anf_demo_create_pool_volume.azcli*
+Run this shell: `anf-create.sh`
 
 ## 5. Install kubectl, helm, az cli and git
-- ~~Install kubectl `sudo snap install kubectl --classic`~~
-- ~~Install helm `sudo snap install helm --classic`~~
-- ~~Install Azure CLI `curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash`~~
-- ~~Install git `sudo apt install git-all -y`~~
+
 - Install kubectl, helm, az cli and git
-<pre>
-sudo apt update && 
+
+```bash
+sudo apt update && \
 sudo snap install kubectl --classic && \
 sudo snap install helm --classic && \
 curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash && \
 sudo apt install git-all -y
-</pre>
+```
 
 ## 6. az login to Azure on Trident VM
+
 - `az login --use-device-code`
 - `https://microsoft.com/devicelogin`
 - Set as default account `az account set -s SUBSCRIPTION_ID` if necessary
