@@ -268,6 +268,7 @@ df -h
 * Install wget
 
 ```Bash
+cd /mnt/data/
 apt update
 apt install -y wget
 wget https://releases.hashicorp.com/terraform/1.1.5/terraform_1.1.5_windows_amd64.zip
