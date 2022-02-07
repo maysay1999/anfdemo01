@@ -113,8 +113,14 @@ az login --tenant {your_tenant_name}
 
 ## 6. Connect AKS cluster to Trident VM
 
+Kubernetes service --> AnfCluster01 and click "Connect".  And copy and paste two command lines line by line on Ubuntu jump host. 
 
-Copy 'az aks get-credentials…' on Azure Portal and paste to Trident VM
+![Connect to AKS](https://github.com/maysay1999/anfdemo01/blob/main/images/connect_to_aks.jpg)
+
+```Bash
+az account set -s {your_subscriptionID}
+az aks get-credentials --resource-group anftest-rg --name AnfCluster01
+```
 
 ## 7. Install Trident 
 
