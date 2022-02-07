@@ -49,7 +49,7 @@ az group create -n anftest-rg -l japaneast
 * Create Ubuntu VM [ARM for Ubuntu](https://github.com/maysay1999/anfdemo01/tree/main/trident) (right-click on this link).  After deploying Ubuntu VM, remotely log in via public IP address with your favorite SSH Agent software, [Windows Terminal](https://docs.microsoft.com/en-us/windows/terminal/install), [WSL](https://docs.microsoft.com/en-us/windows/wsl/install) or [Tera Term](https://osdn.net/projects/ttssh2/releases/).
 
 ```Bash
-ssh {your_public_ip_address} -l askadmin
+ssh {your_public_ip_address} -l aksadmin
 ```
 
 ## 2. Create AKS cluster
