@@ -57,7 +57,10 @@ az aks create \
 - Pool named mypool1: 4TB, Standard
 - Volume named myvol1: 100GB, NGFSv3
 
-Run this shell: `./anf-create.sh`
+Run this shell: 
+```bash
+./anf-create.sh
+```
 
 ## 5. Install kubectl, helm, az cli and git
 
