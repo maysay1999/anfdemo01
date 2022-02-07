@@ -8,9 +8,9 @@ Dynamic volume provisioning allows storage volumes to be created on-demand. With
 
 ## Your reference
 
-[K8s cheatsheet site](https://kubernetes.io/docs/reference/kubectl/cheatsheet/)\
-[Tridnet URL](https://netapp.io/persistent-storage-provisioner-for-kubernetes/)\
-[Today's hands-on diagram](https://github.com/maysay1999/anfdemo01/blob/main/diagram/211214_hands-on_diagram_aks_nfs.pdf)
+* **[K8s cheatsheet site](https://kubernetes.io/docs/reference/kubectl/cheatsheet/)** *Kubeenetes offficial cheetsheet*
+* **[Tridnet URL](https://netapp.io/persistent-storage-provisioner-for-kubernetes/)** *Trident Site and Github site*
+* **[Today's hands-on diagram](https://github.com/maysay1999/anfdemo01/blob/main/diagram/211214_hands-on_diagram_aks_nfs.pdf)** *You can download the hands-on diagram here.*
 
 ### Commands that we use this hands-on session
 
