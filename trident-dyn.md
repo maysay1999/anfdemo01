@@ -200,12 +200,15 @@ vim ~/AnfDemo01/backend-azure-anf-advanced.json
 
 ![json file to create Tridnet Backend](https://github.com/maysay1999/anfdemo01/blob/main/images/json-backend.jpg)
 
-## 11. Create backend
+## 11. Create backend with tridentctl
 
-* ~~cd to Trident `cd ~/trident-installer`~~
-* ~~`kubectl apply -f sample-input/backends-samples/azure-netapp-files/backend-anf.yaml -n trident`~~
-* ~~Verify `tridentctl -n trident create backend -f trident-installer/sample-input/backends-samples/azure-netapp-files/backend-anf.yaml`~~
-* Execute this command  `tridentctl create backend -f backend-azure-anf-advanced.json -n trident`
+* Using [tridentctl command](https://netapp-trident.readthedocs.io/en/stable-v18.07/reference/tridentctl.html), create Trident Backend
+
+```Bash
+tridentctl create backend -f backend-azure-anf-advanced.json -n trident
+```
+
+> **Note** Please refer to [this site](https://netapp-trident.readthedocs.io/en/stable-v18.07/reference/tridentctl.html) for tridentctl command. 
 
 ## 12. Create StorageClass (anf-storageclass.yaml)
 
