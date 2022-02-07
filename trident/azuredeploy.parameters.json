@@ -14,9 +14,6 @@
     "adminPasswordOrKey": {
       "value": null
     },
-    "dnsLabelPrefix": {
-      "value": "Please put a unique name here"
-    },
     "ubuntuOSVersion": {
       "value": "18.04-LTS"
     },
@@ -33,7 +30,7 @@
       "value": "aksvm-sub"
     },
     "networkSecurityGroupName": {
-      "value": "aksNSG"
+      "value": "aksubuntu-nsg"
     }
   }
 }
