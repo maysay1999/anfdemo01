@@ -175,18 +175,6 @@ vim ~/.bashrc
 
 ![add alias](https://github.com/maysay1999/anfdemo01/blob/main/images/alias.jpg)
 
-* Use this command to create a clone of this site locally `git clone https://github.com/maysay1999/anfdemo01.git AnfDemo01`
-* `cd ~/AnfDemo01/astra`
-* `chmod 711 csi-install.sh`
-* `./csi-install.sh`
-* ~~`kubectl apply -f snapshot.storage.k8s.io_volumesnapshotclasses.yaml`~~
-* ~~`kubectl apply -f snapshot.storage.k8s.io_volumesnapshotcontents.yaml`~~
-* ~~`kubectl apply -f snapshot.storage.k8s.io_volumesnapshots.yaml`~~
-* ~~`kubectl apply -f rbac-snapshot-controller.yaml`~~
-* ~~`kubectl apply -f setup-snapshot-controller.yaml`~~\
-or\
-~~`tridentctl install -n trident --csi`~~
-
 ## 9. Create Service Principal
 
 * Creaete a new SP named "http://netapptridentxxx" `az ad sp create-for-rbac --name "http://netapptridentxxx" --role contributor --scopes /subscriptions/{SUBSCRIPTION_ID}`
