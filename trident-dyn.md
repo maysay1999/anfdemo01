@@ -190,30 +190,15 @@ az ad sp create-for-rbac --name "http://netapptridentxxx" \
   --scopes /subscriptions/{your_SUBSCRIPTION_ID}
 ```
 
-## 10. modify backend-azure-anf-advanced.json (backend-azure-anf-advanced.json)
+## 10. Modify backend-azure-anf-advanced.json as preparation to create Tridnet Backend
 
-* ~~path: trident-installer/sample-input/backends-samples/azure-netapp-files/backend-anf.yaml `cd ~/trident-installer/sample-input/backends-samples/azure-netapp-files/`~~
-* `cd ~/AnfDemo01`
-* Edit backend-anf.yaml `vim backend-azure-anf-advanced.json`
-* Example
-{
-    "version": 1,
-    "storageDriverName": "azure-netapp-files",
-    "subscriptionID": "a9f075ef-390d-4cc4-8066-2896b4f0fake",
-    "tenantID": "5da13186-1f6e-413c-953a-f5aff3c0fake",
-    "clientID": "199275e0-d9ca-4142-92a1-771ff555fake",
-    "clientSecret": "zONFD4o9zl7n9yLnya.T7hxVCaiBFfake",
-    "location": "japaneast",
-    "serviceLevel": "Standard",
-    "virtualNetwork": "aks-vnet-xxxxxxxx",
-    "subnet": "netapp-subnet",
-    "nfsMountOptions": "vers=3,proto=tcp,timeo=600",
-    "limitVolumeSize": "500Gi",
-    "defaults": {
-        "exportRule": "10.0.0.0/8,172.16.0.0/12",
-        "size": "100Gi"
-    }
-}
+* Edit `backend-azure-anf-advanced.json` file under AnfDemo01 directory. The values of "subscriptionID", "tenantID", "clientID", "clientSecret" and "virtualNetwork" shall be changed
+
+```Bash
+vim ~/AnfDemo01/backend-azure-anf-advanced.json
+```
+
+![json file to create Tridnet Backend](https://github.com/maysay1999/anfdemo01/blob/main/images/json-backend.jpg)
 
 ## 11. Create backend
 
