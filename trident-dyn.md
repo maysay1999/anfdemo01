@@ -71,7 +71,7 @@ az aks create \
 * Pool named mypool1: 4TB, Standard
 * Volume named myvol1: 100GB, NGFSv3
 
-### 1. Open anf-create.sh with `vi`, `vim` or `code`.
+* Open anf-create.sh with `vi`, `vim` or `code`.
 
 ![anf-create.sh](https://github.com/maysay1999/anfdemo01/blob/main/images/anf-create_shell.jpg)
 
@@ -80,11 +80,11 @@ cd AnfDemo01/
 vim anf-create.sh
 ```
 
-### 2. Edit anf-create.sh.  aks-vnet-xxxxxxxx to be modified as your VNet name under Resource Group, *MC_anftest-rg_AnfCluster01_japaneast*
+* Edit anf-create.sh.  aks-vnet-xxxxxxxx to be modified as your VNet name under Resource Group, *MC_anftest-rg_AnfCluster01_japaneast*
 
 ![anf-create2.sh](https://github.com/maysay1999/anfdemo01/blob/main/images/anf-create_shell2.jpg)
 
-### 3. Run this shell
+* Run this shell
 
 ```bash
 ./anf-create.sh
@@ -137,8 +137,13 @@ curl -L -O -C - https://github.com/NetApp/trident/releases/download/v22.01.0/tri
 tar xzvf trident-installer-22.01.0.tar.gz`
 ```
 
-- Copy tridentctl to /usr/local/bin/
-`cd trident-installer`  `sudo cp tridentctl /usr/local/bin/`
+* Copy tridentctl to /usr/local/bin/ ($PATH directory)
+
+```Bash
+cd trident-installer
+sudo cp tridentctl /usr/local/bin/
+```
+
 * Create a Trident Namespace `kubectl create ns trident`
 * Install trident with helm `cd helm` and then `helm install trident trident-operator-21.07.2.tgz -n trident`
 * ~~Deploy Trident operator `kubectl apply -f trident-installer/deploy/bundle.yaml -n trident`~~
