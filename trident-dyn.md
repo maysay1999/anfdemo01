@@ -73,6 +73,12 @@ az aks create \
 
 Run this shell: 
 ```bash
+cd AnfDemo01/
+vim anf-create.sh
+```
+
+[anf-create.sh](https://github.com/maysay1999/anfdemo01/blob/main/images/anf-create_shell.jpg)
+
 ./anf-create.sh
 ```
 
