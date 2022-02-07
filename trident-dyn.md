@@ -67,9 +67,11 @@ az aks create \
 
 ## 3. Create ANF account, pool and volume (anf-create.sh)
 
-* ANF account: anfac01
-* Pool named mypool1: 4TB, Standard
-* Volume named myvol1: 100GB, NGFSv3
+ANF account: anfac01
+
+Pool named mypool1: 4TB, Standard
+
+Volume named myvol1: 100GiB, NGFSv3
 
 * Open anf-create.sh with `vi`, `vim` or `code`.
 
