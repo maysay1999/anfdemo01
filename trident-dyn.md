@@ -162,12 +162,19 @@ helm install trident trident-operator-22.01.0.tgz -n trident
 * Verify trident oprator and CSI pods are running in *trident* namespace
 
 ```Bash
-kubectl get pod -A
+kubectl get po -A
 ```
 
-## 8. Configure CSI (csi-install.sh)
+## 8. Create an alias, k=kubectl
 
-* Back to home directory: `cd`
+* Edit `.bashrc`.  Add a new alias, `alias k=kubectl`
+
+```Bash
+vim ~/.bashrc
+```
+
+![add alias](https://github.com/maysay1999/anfdemo01/blob/main/images/alias.jpg)
+
 * Use this command to create a clone of this site locally `git clone https://github.com/maysay1999/anfdemo01.git AnfDemo01`
 * `cd ~/AnfDemo01/astra`
 * `chmod 711 csi-install.sh`
