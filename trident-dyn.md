@@ -208,7 +208,7 @@ vim ~/AnfDemo01/backend-azure-anf-advanced.json
 tridentctl create backend -f backend-azure-anf-advanced.json -n trident
 ```
 
-> **Note** *Please refer to [this site](https://netapp-trident.readthedocs.io/en/stable-v18.07/reference/tridentctl.html) for tridentctl command.
+> **Note** Please refer to [this site](https://netapp-trident.readthedocs.io/en/stable-v18.07/reference/tridentctl.html) for tridentctl command.
 
 ## 12. Create StorageClass (anf-storageclass.yaml)
 
@@ -225,28 +225,63 @@ kubectl apply -f anf-storageclass.yaml
 
 ## 13. Create PVC (anf-pvc.yaml)
 
-* `kubectl apply -f anf-pvc.yaml`
-* Name: anf-pvc
-* SC name: azure-netapp-files
-* Storage 1TiB. RWX
-* Verify `kubectl get pvc anf-pvc`
+Name: anf-pvc
+
+SC name: azure-netapp-files
+
+Storage 100MiB, RWX
+
+```Bash
+kubectl apply -f anf-pvc.yaml
+```
+
+> **Verify**  k get pvc
 
 ## 14. Create a pod (anf-nginx-pod.yaml)
 
-* `kubectl apply -f anf-nginx-pod.yaml`
-* CPU 100m, Mem 128Mi
-* Mount path: /mnt/data
-* Storage 100GiB. RWX
+Pod image: NGINX
+
+CPU: 100m, Mem:  128Mi
+
+Mount path: /mnt/data
+
+```Bash
+kubectl apply -f anf-nginx-pod.yaml
+```
+
+> **Verify**  k get po
 
 ## 15. Have access to the pods to view mounted status and Snapshot
 
-* Have access with pod  `kubectl exec -it nginx-pod -- /bin/bash`
-* `df -h` *view mount status*
-* `mount` *view mount status*
-* `apt update`
-* `apt install -y vim` *Install vim*
-* Open VIM and create test.txt or `echo "this is test" > test.txt`
-* `dd if=/dev/zero of=5m.dat bs=1024 count=5120` *create 5MB test file*
+* Have access with pod
+
+```Bash
+kubectl exec -it nginx-pod -- /bin/bash
+```
+
+* View mount status
+
+```Bash
+df -h
+```
+
+* Install wget
+
+```Bash
+apt update
+apt install -y wget
+wget https://releases.hashicorp.com/terraform/1.1.5/terraform_1.1.5_windows_amd64.zip
+```
+
+* Change to /mnt/data and create two files
+
+```Bash
+cd /mnt/data/
+echo "Azure is awesome" > test.txt
+dd if=/dev/zero of=5m.dat bs=1024 count=5120
+cat test.txt
+ls -lah 5m.dat
+```
 
 ~~## 16. Create a deployment (nginx-deployment.yaml)~~
 ~~- `kubectl apply -f nginx-deployment.yaml`~~
