@@ -83,7 +83,7 @@
     },
     "networkSecurityGroupName": {
       "type": "string",
-      "defaultValue": "aksNSG",
+      "defaultValue": "aksubuntu-nsg",
       "metadata": {
         "description": "Name of the Network Security Group"
       }
@@ -149,7 +149,7 @@
           {
             "name": "SSH",
             "properties": {
-              "priority": 1000,
+              "priority": 1050,
               "protocol": "Tcp",
               "access": "Allow",
               "direction": "Inbound",
