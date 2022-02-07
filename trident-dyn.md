@@ -213,6 +213,7 @@ tridentctl create backend -f backend-azure-anf-advanced.json -n trident
 ## 12. Create StorageClass (anf-storageclass.yaml)
 
 SC name: azure-netapp-files
+
 FS type: NFS
 
 ```Bash
