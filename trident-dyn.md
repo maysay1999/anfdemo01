@@ -208,7 +208,7 @@ vim ~/AnfDemo01/backend-azure-anf-advanced.json
 tridentctl create backend -f backend-azure-anf-advanced.json -n trident
 ```
 
-> **Note** Please refer to [this site](https://netapp-trident.readthedocs.io/en/stable-v18.07/reference/tridentctl.html) for tridentctl command. 
+> **Note** *Please refer to [this site](https://netapp-trident.readthedocs.io/en/stable-v18.07/reference/tridentctl.html) for tridentctl command.
 
 ## 12. Create StorageClass (anf-storageclass.yaml)
 
