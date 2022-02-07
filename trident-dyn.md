@@ -1,11 +1,19 @@
-# Azure NetApp Files Hands-on Session: Dynamic Provisioning with Trident interact Ubuntu VM
+# Azure NetApp Files Hands-on Session: ANF Dynamic Provisioning with Trident
 
-Reference:\
-[K8s cheatsheet](https://kubernetes.io/docs/reference/kubectl/cheatsheet/)\
+> How to create Persistent Volune with ANF and Trident in Dynamic Provisioning.  
+
+## Dynamic Provisioning
+
+Dynamic volume provisioning allows storage volumes to be created on-demand. Without dynamic provisioning, cluster administrators have to manually make calls to their cloud or storage provider to create new storage volumes, and then create PersistentVolume objects to represent them in Kubernetes. The dynamic provisioning feature eliminates the need for cluster administrators to pre-provision storage. Instead, it automatically provisions storage when it is requested by users.
+
+## Your reference
+
+[K8s cheatsheet site](https://kubernetes.io/docs/reference/kubectl/cheatsheet/)\
 [Tridnet URL](https://netapp.io/persistent-storage-provisioner-for-kubernetes/)\
-[View hands-on diagram](https://github.com/maysay1999/anfdemo01/blob/main/diagram/211214_hands-on_diagram_aks_nfs.pdf)
+[Today's hands-on diagram](https://github.com/maysay1999/anfdemo01/blob/main/diagram/211214_hands-on_diagram_aks_nfs.pdf)
 
-### Userful commands
+### Commands that we use this hands-on session
+
 Examples)\
 kubectl version\
 kubectl get no\
@@ -26,7 +34,8 @@ kubectl get po -n {namespace}\
 kubectl get po --all-namespaces\
 kubectl get po -A
 
-Use this command to create a clone of this site locally\
+### The source code will be executed in this recipe is available here. 
+
 ```bash
 git clone https://github.com/maysay1999/anfdemo01.git AnfDemo01
 ```
