@@ -6,13 +6,13 @@
       "value": "aksubuntu"
     },
     "adminUsername": {
-      "value": null
+      "value": "aksadmin"
     },
     "authenticationType": {
       "value": "password"
     },
     "adminPasswordOrKey": {
-      "value": null
+      "value": "PlsPutYourPasswordHere"
     },
     "dnsLabelPrefix": {
       "value": "Please put a unique name here"
