@@ -212,11 +212,15 @@ tridentctl create backend -f backend-azure-anf-advanced.json -n trident
 
 ## 12. Create StorageClass (anf-storageclass.yaml)
 
-* cd to AnfDemo01 `cd ~/AnfDemo01`
-* `kubectl apply -f anf-storageclass.yaml`
-* Name: azure-netapp-files
-* NFS
-* Verify `kubectl get sc`
+SC name: azure-netapp-files
+FS type: NFS
+
+```Bash
+cd ~/AnfDemo01
+kubectl apply -f anf-storageclass.yaml
+```
+
+> **Verify *`kubectl get sc`
 
 ## 13. Create PVC (anf-pvc.yaml)
 
