@@ -71,14 +71,22 @@ az aks create \
 - Pool named mypool1: 4TB, Standard
 - Volume named myvol1: 100GB, NGFSv3
 
-Run this shell: 
+1. Open anf-create.sh with `vi`, `vim` or `code`. 
+
+![anf-create.sh](https://github.com/maysay1999/anfdemo01/blob/main/images/anf-create_shell.jpg)
+
 ```bash
 cd AnfDemo01/
 vim anf-create.sh
 ```
 
-[anf-create.sh](https://github.com/maysay1999/anfdemo01/blob/main/images/anf-create_shell.jpg)
+2. Edit anf-create.sh.  aks-vnet-xxxxxxxx to be modified as your VNet name under Resource Group, *MC_anftest-rg_AnfCluster01_japaneast*. 
 
+![anf-create2.sh](https://github.com/maysay1999/anfdemo01/blob/main/images/anf-create_shell2.jpg)
+
+3. Run this shell. 
+
+```bash
 ./anf-create.sh
 ```
 
