@@ -14,23 +14,23 @@ Dynamic volume provisioning allows storage volumes to be created on-demand. With
 
 ### Commands that we use this hands-on session
 
-* kubectl get no *nodes*
-* kubectl get po -o wide *Output format wide*
-* kubectl get po -w *After listing/getting the requested object, watch for changes.*
-* kubectl describe po {pod_name} *Show details of a specific resource or group of resources*
-* kubectl get po *pods*
-* kubectl get ns *namespaces*
-* kubectl get deploy *deployments*
-* kubectl get pv *PersisetentVolume*
-* kubectl get pvc *PersisetentVolumeClaim*
-* kubectl get sc *StorageClass*
-* kubectl get svc *Service*
-* kubectl apply -f {name}.yaml *Apply a configuration to a resource by file name* 
-* kubectl create -f {name}.yaml *Create a resource from a file*
-* kubectl delete -f {name}.yaml *Delete resources by file names*
-* kubectl get po -n {namespace} *-n : namespace*
-* kubectl get po --all-namespaces *List all pods in all namespaces*
-* kubectl get po -A *List all pods in all namespaces*
+* **kubectl get no** *nodes*
+* **kubectl get po -o** wide *Output format wide*
+* **kubectl get po -w** *After listing/getting the requested object, watch for changes.*
+* **kubectl describe po {pod_name}** *Show details of a specific resource or group of resources*
+* **kubectl get po** *pods*
+* **kubectl get ns** *namespaces*
+* **kubectl get deploy** *deployments*
+* **kubectl get pv** *PersisetentVolume*
+* **kubectl get pvc** *PersisetentVolumeClaim*
+* **kubectl get sc** *StorageClass*
+* **kubectl get svc** *Service*
+* **kubectl apply -f {name}.yaml** *Apply a configuration to a resource by file name* 
+* **kubectl create -f {name}.yaml** *Create a resource from a file*
+* **kubectl delete -f {name}.yaml** *Delete resources by file names*
+* **kubectl get po -n {namespace}** *-n : namespace*
+* **kubectl get po --all-namespaces** *List all pods in all namespaces*
+* **kubectl get po -A** *List all pods in all namespaces*
 
 ### The source code will be executed in this recipe is available here. 
 
