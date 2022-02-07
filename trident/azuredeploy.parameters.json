@@ -12,7 +12,7 @@
       "value": "password"
     },
     "adminPasswordOrKey": {
-      "value": "PlsPutYourPasswordHere"
+      "value": null
     },
     "dnsLabelPrefix": {
       "value": "Please put a unique name here"
