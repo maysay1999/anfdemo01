@@ -1,62 +1,104 @@
-# Azure NetApp Files Hands-on Session: AKS version
+# Azure NetApp Files Hands-on Session: ANF Static Provisioning
 
-K8s cheatsheet(https://kubernetes.io/docs/reference/kubectl/cheatsheet/)
+> How to create Persistent Volune with ANF in Static Provisioning.  
 
-ex)\
-kubectl get node\
-kubectl get node -o wide\
-kubectl describe node\
-kubectl get pod -o wide
+## Static Provisioning
 
+Static provisioning is basically an upfront purchase of storage that will be used to serve all your cluster’s needs. When using static allocation, administrators need to pre-allocate all PVs. This can be tricky, because to optimize costs and avoid additional allocations, you need precise foreknowledge of how the cluster’s storage resources will be used.
+
+### The source code will be executed in this recipe is available here
+
+```bash
 git clone https://github.com/maysay1999/anfdemo01.git AnfDemo01
+```
 
-## 1. Create AKS cluster (anf-demo-aks-prework.azcli)
-- Resource group: anftest-rg
-- Cluster name: AnfCluster01
+## 1. Create AKS cluster
 
-## 2. Create ANF subnet and delegate the subnet for ANF (anf_demo_create_subnet.azcli)
-- Resource group for Nodes(VMs): MC_anftest-rg_AnfCluster01_japaneast
-- Vnet inside MC_anftest-rg_AnfCluster01_japaneast: aks-vnet-xxxxxxxx
-- ANF subnet: 10.0.0.0/26
+* Resource group: anftest-rg
+* Cluster name: AnfCluster01
+* Node count: 3
 
-## 3. Create ANF account, pool and volume (anf_demo_create_pool_volume.azcli)
-- ANF account: anfac01
-- Pool named mypool1: 4TB, Standard
-- Volume named myvol1: 100GB, NGFSv3
-*Running as shell is easier.*
-*chmod 711 anf_demo_create_pool_volume.azcli*
-*./anf_demo_create_pool_volume.azcli*
+```bash
+az aks create \
+    -g anftest-rg \
+    -n AnfCluster01 \
+    -l japaneast \
+    --node-count 3 \
+    --generate-ssh-keys \
+    --node-vm-size Standard_B2s \
+    --enable-managed-identity
+```
 
-## 4. Create PV (anf-pv-nfs.yaml)
-- 100GiB, RWX
-- NFS client: 10.0.0.4:/nfspath01
+## 2. Create ANF account, pool and volume (anf-create.sh)
 
-## 5. Create PVC (anf-pvc-nfs.yaml)
-- Request storage 1GiB. RWX
+ANF account: anfac01
 
-## 6. Create a pod (anf-nginx-nfs-pod.yaml)
-- 0.1 CPU, 128MiB memory
-- Mount point: /mnt/azure:/disk01
+Pool named mypool1: 4TB, Standard
 
-## 7. View mounted status and Snapshot
-- df -h
-- mount
+Volume named myvol1: 100GiB, NGFSv3
 
-## 8. Preparation for Astra 1 (CSI)
-- astra/snapshot.storage.k8s.io_volumesnapshotclasses.yaml
-- astra/snapshot.storage.k8s.io_volumesnapshotcontents.yaml
-- astra/snapshot.storage.k8s.io_volumesnapshots.yaml
-- astra/rbac-snapshot-controller.yaml
-- astra/setup-snapshot-controller.yaml
+* Open anf-create.sh with `vi`, `vim` or `code`.
 
-## 9. Preparation for Astra 2 (SP)
-`az ad sp create-for-rbac --name http://sp-astra-service-principal --role contributor --scopes /subscriptions/SUBSCRIPTION_ID`
+```bash
+cd AnfDemo01/
+vim anf-create.sh
+```
 
-## 10. Install Apps (anf-astra-helm.txt)
-- Install WordPress with MariaDB
-- Install MySQL
-- Install PostgreSQL 
+* Edit anf-create.sh.  aks-vnet-xxxxxxxx to be modified as your VNet name under Resource Group, *MC_anftest-rg_AnfCluster01_japaneast*
 
-## 11. Useful command for Astra
-kubectl get sc\
-K8s cheatsheet(https://kubernetes.io/docs/reference/kubectl/cheatsheet/)
+* Run this shell
+
+```bash
+./anf-create.sh
+```
+
+## 3. Create PV (anf-pv-nfs.yaml)
+
+* 100GiB, RWX
+
+* NFS client: 10.0.0.4:/nfspath01
+
+```Bash
+cd ~/AnfDemo01
+kubectl apply -f anf-pv-nfs.yaml
+```
+
+> **Verify** `kubectl get pv`
+
+## 4. Create PVC (anf-pvc-nfs.yaml)
+
+* Request storage 1GiB. RWX
+
+```Bash
+kubectl apply -f anf-pvc-nfs.yaml
+```
+
+> **Verify** `kubectl get pvc`
+
+## 5. Create a pod (anf-nginx-nfs-pod.yaml)
+
+* 0.1 CPU, 128MiB memory
+
+* Mount point: /mnt/azure
+
+* Mount name: disk01
+
+```Bash
+kubectl apply -f anf-nginx-nfs-pod.yaml
+```
+
+> **Verify** `kubectl get po`
+
+## 6. View mounted status
+
+* Have access with pod
+
+```Bash
+kubectl exec -it anf-nginx-nfs-pod -- /bin/bash
+```
+
+* View mount status
+
+```Bash
+df -h
+```
