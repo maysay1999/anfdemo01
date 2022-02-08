@@ -1,6 +1,6 @@
 # ANF Hands-on program: Use ANF as PersistentVolume
 
-> Learn how to use ANF on kubernetes environment. Three types of hands-on program
+> Learn how to use ANF on kubernetes environment. Three types of hands-on program is available
 
 ## [ANF for Static Provisioning](https://github.com/maysay1999/anfdemo01/blob/main/static-prov.md)
 
