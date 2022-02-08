@@ -18,7 +18,7 @@ The other option is to use dynamic provisioning. In Kubernetes, dynamic provisio
 
 [Astra Control](https://cloud.netapp.com/astra) offers stateful Kubernetes workloads a rich set of storage and application-aware data management services powered by NetApp’s trusted data protection technology.
 
-**Get started with ANF Static provisioning hands-on program [here](https://github.com/maysay1999/anfdemo01/blob/main/astra-only.md)**
+**Get started with ANF with Astra Control Service hands-on program [here](https://github.com/maysay1999/anfdemo01/blob/main/astra-only.md)**
 
 ## History
 
