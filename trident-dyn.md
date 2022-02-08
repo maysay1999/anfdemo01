@@ -156,7 +156,7 @@ sudo cp tridentctl /usr/local/bin/
 kubectl create ns trident
 ```
 
-* Install trident with helm 
+* Install trident with helm
 
 ```Bash
 cd helm
