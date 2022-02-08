@@ -1,15 +1,13 @@
-# Azure NetApp Files Hands-on Session: AKS version
+# ANF Hands-on program: Use ANF as PersistentVolume
 
-K8s cheatsheet(https://kubernetes.io/docs/reference/kubectl/cheatsheet/)
+> Learn how to use ANF on kubernetes environment. Three types of hands-on program
 
-ex)\
-kubectl get node\
-kubectl get node -o wide\
-kubectl describe node\
-kubectl get pod -o wide
+## [ANF for Static Provisioning](https://github.com/maysay1999/anfdemo01/blob/main/static-prov.md)
+Static provisioning is basically an upfront purchase of storage that will be used to serve all your cluster’s needs. When using static allocation, administrators need to pre-allocate all PVs. This can be tricky, because to optimize costs and avoid additional allocations, you need precise foreknowledge of how the cluster’s storage resources will be used.
 
-git clone https://github.com/maysay1999/anfdemo01.git AnfDemo01
 
+
+* **[ANF Static provisioning]()**
 ## 1. Create AKS cluster (anf-demo-aks-prework.azcli)
 - Resource group: anftest-rg
 - Cluster name: AnfCluster01
