@@ -131,7 +131,7 @@ You can find the names of the charts in repositories you have already added.  In
 helm search repo bitnami
 ```
 
-## 8. Install MariaDB only
+## 8. Install MariaDB
 
 * Install MariaDB in either of these ways.  '--create-namespace' flag can skip the process of creating a new namespace
 
@@ -149,7 +149,7 @@ helm install astramaria bitnami/mariadb -n maria01 --create-namespace
 > **Verify** `kubectl get po -n maria01` or `kubectl get po -A`\
 > **Note** In case of uninstallation needed, use *helm uninstall*. `helm uninstall astramaria -n maria01`
 
-## 9. Install PostgreSQL only
+## 9. Install PostgreSQL
 
 * Install PostgreSQL in either of these ways.  '--create-namespace' flag can skip the process of creating a new namespace
 
@@ -174,18 +174,14 @@ Note) In case of uninstallation, use *helm uninstall*. `helm uninstall astrapost
 1. Backup the maria01 to default Backet
 
 2. Delete maria01 nemaspace
+   * Delete command
+    `kubectl delete ns maria01`
 
-* Delete command
+3. Restore maria01 from Astra
+   * View restoration status
+     `kubectl get po -A -w`
 
-```Bash
-kubectl delete ns maria01
-```
-
-3. Restore MariaDB from Astra
-
-* View restoration status `kubectl get po -A`
-
-## 15. Create one more Bucket for Disaster Recovery
+## 15. Create one more Bucket for Disaster Recovery (**undercooked**)
 
 ```bash
 az storage account create \
