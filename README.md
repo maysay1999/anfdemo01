@@ -22,4 +22,4 @@ The other option is to use dynamic provisioning. In Kubernetes, dynamic provisio
 
 ## History
 
-CHANGELOG.md will be uploaded soon.
+CHANGELOG.md will be added soon.
