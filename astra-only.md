@@ -18,8 +18,11 @@
 * **[Official manual](https://docs.netapp.com/us-en/astra-control-service/pdfs/fullsite-sidebar/Astra_Control_Service_documentation.pdf)** *Download Official Astra (ACS) manual here*
 * **[Portal login site](https://astra.netapp.io/)** *You can login your permanent Astra Control Service here.*
 
+### The source code will be executed in this recipe is available here
 
-`git clone https://github.com/maysay1999/anfdemo01.git AnfDemo01`
+```bash
+git clone https://github.com/maysay1999/anfdemo01.git AnfDemo01
+```
 
 ## 1. Create AKS cluster
 
