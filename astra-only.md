@@ -146,7 +146,7 @@ or
 helm install astramaria bitnami/mariadb -n maria01 --create-namespace
 ```
 
-> **Verify** `kubectl get po -n maria01` or `kubectl get po -A`
+> **Verify** `kubectl get po -n maria01` or `kubectl get po -A`\
 > **Note** In case of uninstallation, use *helm uninstall*. `helm uninstall astramaria -n maria01`
 
 ## 11. Install PostgreSQL only
