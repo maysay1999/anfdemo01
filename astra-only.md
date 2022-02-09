@@ -1,8 +1,23 @@
-# Azure NetApp Files Hands-on Session: Astra only
+# Azure NetApp Files Hands-on Session: ANF and Astra Control Service
+
+> Explore what Astra Control can bring to your Kubernetes Applications
 
 **Architecture and components**
 ![Architecture and components](https://docs.netapp.com/us-en/astra-control-service/media/learn/astra-ads-architecture-diagram-v2.png)\
-[Download Official Astra (ACS) manual here](https://docs.netapp.com/us-en/astra-control-service/pdfs/fullsite-sidebar/Astra_Control_Service_documentation.pdf)
+
+## WIth Astra Control, you are able to
+
+* Automatically provision persistent storage
+* Manage data protection operations at application level
+* Automate policy-driven snapshot and backup operations
+* Migrate applications with data across Kubernetes clusters
+
+## Your reference
+
+* **[Quick Start](https://docs.netapp.com/us-en/astra-control-service/get-started/quick-start.html)** *Quick start for Astra Control Service*
+* **[Official manual](https://docs.netapp.com/us-en/astra-control-service/pdfs/fullsite-sidebar/Astra_Control_Service_documentation.pdf)** *Download Official Astra (ACS) manual here*
+* **[Portal login site](https://astra.netapp.io/)** *You can login your permanent Astra Control Service here.*
+
 
 `git clone https://github.com/maysay1999/anfdemo01.git AnfDemo01`
 
