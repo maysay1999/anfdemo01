@@ -117,7 +117,7 @@ On Astra --> Clusters --> Storage --> Storage Class --> Choose "netapp-anf-perf-
 
 > **Note**   Ensure that ANF is set default of StorageClass with `kubectl get sc` command
 
-## 9. Install Helm Chart Bitnami Repository (anf-astra-helm.txt)
+## 7. Install Helm Chart Bitnami Repository
 
 Install Helm Chart Bitnami repository
 
@@ -131,16 +131,16 @@ You can find the names of the charts in repositories you have already added.  In
 helm search repo bitnami
 ```
 
-## 10. Install MariaDB only
+## 8. Install MariaDB only
 
-* Install MariaDB in either of these ways.  '--create-namespace' flag can skip 'kubectl create ns xxxxx'
+* Install MariaDB in either of these ways.  '--create-namespace' flag can skip the process of creating a new namespace
 
 ```Bash
 kubectl create ns maria01
 helm install astramaria bitnami/mariadb -n maria01
 ```
 
-or 
+or
 
 ```Bash
 helm install astramaria bitnami/mariadb -n maria01 --create-namespace
@@ -149,16 +149,16 @@ helm install astramaria bitnami/mariadb -n maria01 --create-namespace
 > **Verify** `kubectl get po -n maria01` or `kubectl get po -A`\
 > **Note** In case of uninstallation needed, use *helm uninstall*. `helm uninstall astramaria -n maria01`
 
-## 11. Install PostgreSQL only
+## 9. Install PostgreSQL only
 
-* Install MariaDB in either of these ways.  '--create-namespace' flag can skip 'kubectl create ns xxxxx'
+* Install PostgreSQL in either of these ways.  '--create-namespace' flag can skip the process of creating a new namespace
 
 ```Bash
 kubectl create ns postgresql01
 helm install astramaria bitnami/postgresql -n postgresql01
 ```
 
-or 
+or
 
 ```Bash
 helm install astrapost bitnami/postgresql -n postgresql01 --create-namespace
@@ -169,21 +169,21 @@ helm install astrapost bitnami/postgresql -n postgresql01 --create-namespace
 
 Note) In case of uninstallation, use *helm uninstall*. `helm uninstall astrapost -n postgresql01`
 
-## 12. Install WordPress
+## 10. Backup maria01 and restore from Astra Backup
 
-- Install `helm install astrawp bitnami/wordpress -n wp01 --create-namespace`
-- Verify `kubectl get po -n wp01`
-- Verify `kubectl get po -A`
+1. Backup the maria01 to default Backet
 
-Note) In case of uninstallation, use *helm uninstall*. `helm uninstall astrawp -n wp01`
+2. Delete maria01 nemaspace
 
-## 13. View status of created PV
-`kubectl get pv -A`
+* Delete command
 
-## 14. Backup maria01 and restore from Astra Backup
+```Bash
+kubectl delete ns maria01
+```
 
-- Delete command `kubectl delete ns maria01`
-- Verify after restoration `kubectl get po -A`
+3. Restore MariaDB from Astra
+
+* View restoration status `kubectl get po -A`
 
 ## 15. Create one more Bucket for Disaster Recovery
 
