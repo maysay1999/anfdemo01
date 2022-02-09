@@ -110,7 +110,10 @@ kubectl patch storageclass netapp-anf-perf-standard -p '{"metadata": {"annotatio
 ```
 
 * Set ANF Standard as default StorageClass (GUI)
+
 On Astra --> Clusters --> Storage --> Storage Class --> Choose "netapp-anf-perf-standard" --> Actions --> Set as default
+
+![Set as default sc](https://github.com/maysay1999/anfdemo01/blob/main/images/sc_set_as_default.jpg)
 
 > **Note**   Ensure that ANF is set default of StorageClass with `kubectl get sc` command
 
