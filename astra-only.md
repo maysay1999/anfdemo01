@@ -117,18 +117,37 @@ On Astra --> Clusters --> Storage --> Storage Class --> Choose "netapp-anf-perf-
 
 > **Note**   Ensure that ANF is set default of StorageClass with `kubectl get sc` command
 
-## 9. Install Help Chart Repository (anf-astra-helm.txt)
+## 9. Install Helm Chart Bitnami Repository (anf-astra-helm.txt)
 
-- `helm repo add bitnami https://charts.bitnami.com/bitnami`
-- `helm search repo bitnami`: You can find the names of the charts in repositories you have already added
+Install Helm Chart Bitnami repository
+
+```Bash
+helm repo add bitnami https://charts.bitnami.com/bitnami
+```
+
+You can find the names of the charts in repositories you have already added.  Installation of MariaDB, PostgreSQL and WordPress is ready.  
+
+```Bash
+helm search repo bitnami
+```
 
 ## 10. Install MariaDB only
 
-- Install `helm install astramaria bitnami/mariadb -n maria01 --create-namespace`
-- Verify `kubectl get po -n maria01`
-- Verify `kubectl get po -A`
+* Install
 
-Note) In case of uninstallation, use *helm uninstall*. `helm uninstall astramaria -n maria01`
+```Bash
+kubectl create ns maria01
+helm install astramaria bitnami/mariadb -n maria01
+```
+
+or 
+
+```Bash
+helm install astramaria bitnami/mariadb -n maria01 --create-namespace
+```
+
+> **Verify** `kubectl get po -n maria01` or `kubectl get po -A`
+> **Note** In case of uninstallation, use *helm uninstall*. `helm uninstall astramaria -n maria01`
 
 ## 11. Install PostgreSQL only
 
