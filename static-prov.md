@@ -12,6 +12,8 @@ Static provisioning is basically an upfront purchase of storage that will be use
 git clone https://github.com/maysay1999/anfdemo01.git AnfDemo01
 ```
 
+You can find the yaml files of static provisioninig session in AnfDemo01/yaml-static-provisioning/ directory.  
+
 ## 1. Create AKS cluster
 
 * Resource group: anftest-rg
