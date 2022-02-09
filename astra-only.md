@@ -5,7 +5,7 @@
 **Architecture and components**
 ![Architecture and components](https://docs.netapp.com/us-en/astra-control-service/media/learn/astra-ads-architecture-diagram-v2.png)\
 
-## WIth Astra Control, you are able to
+## With Astra Control, you are able to
 
 * Automatically provision persistent storage
 * Manage data protection operations at application level
@@ -87,28 +87,32 @@ az aks get-credentials -n AnfCluster01 -g anftest-rg
 5. In a few seconds, send you to Astra User Interface
 6. On the next time, you can have access to [https://astra.netapp.io](https://astra.netapp.io) to have access to [Astra Control Service](https://astra.netapp.io)
 
-## 7. Create Astra Service Principal
+## 5. Create Service Principal
 
-- Obtain the subscription ID  `az account show`
-- Create a new Service Principal `az ad sp create-for-rbac --name http://sp-astra-service-principalxxx --role contributor --scopes /subscriptions/{SUBSCRIPTION_ID}`
-- Copy the outputed JSON\
-*Example of JSON*\
-{\
-  "appId": "4b713e57-b68a-45f6-aac4-itsfakexxxx",\
-  "displayName": "xxxxxxxxxxxxxxxxxxx",\
-  "name": "4b713e57-b68a-45f6-aac4-itsfakexxxx",\
-  "password": "kEb-3zXnxBa7blJNitsfakexxxxxxxxx",\
-  "tenant": "588b175c-bf7e-491a-92e5-itsfakexxxxxx"\
-}   
+* Creaete a new SP named "http://sp-astra-service-principalxxx".  Output such as AppID and Password shall be written on notepad.  
 
-## 8. Ensure that ANF is set as default storage service
+```Bash
+az ad sp create-for-rbac --name "http://sp-astra-service-principalxxx" \
+  --role contributor \
+  --scopes /subscriptions/{your_SUBSCRIPTION_ID}
+```
 
-- Set ANF Standard as default StorageClass (CLI)\
-`kubectl patch storageclass netapp-anf-perf-standard -p '{"metadata": {"annotations":{"storageclass.kubernetes.io/is-default-class":"true"}}}'`
-- Set ANF Standard as default StorageClass (GUI)\
+> **Note**  'az ad sp list --display-name "http://sp-astra-service-principal" -o table' command shows you the SP created.  
+
+## 6. Ensure that ANF is set as default storage service
+
+* Set ANF Standard as default StorageClass (CLI)
+
+CLI
+
+```Bash
+kubectl patch storageclass netapp-anf-perf-standard -p '{"metadata": {"annotations":{"storageclass.kubernetes.io/is-default-class":"true"}}}'`
+```
+
+* Set ANF Standard as default StorageClass (GUI)
 On Astra --> Clusters --> Storage --> Storage Class --> Choose "netapp-anf-perf-standard" --> Actions --> Set as default
-- Ensure that ANF is set default of StorageClass\
-`kubectl get sc`
+
+> **Note**   Ensure that ANF is set default of StorageClass with `kubectl get sc` command
 
 ## 9. Install Help Chart Repository (anf-astra-helm.txt)
 
