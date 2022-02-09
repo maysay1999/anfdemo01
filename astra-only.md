@@ -133,7 +133,7 @@ helm search repo bitnami
 
 ## 10. Install MariaDB only
 
-* Install
+* Install MariaDB in either of these ways.  '--create-namespace' flag can skip 'kubectl create ns xxxxx'
 
 ```Bash
 kubectl create ns maria01
@@ -147,13 +147,25 @@ helm install astramaria bitnami/mariadb -n maria01 --create-namespace
 ```
 
 > **Verify** `kubectl get po -n maria01` or `kubectl get po -A`\
-> **Note** In case of uninstallation, use *helm uninstall*. `helm uninstall astramaria -n maria01`
+> **Note** In case of uninstallation needed, use *helm uninstall*. `helm uninstall astramaria -n maria01`
 
 ## 11. Install PostgreSQL only
 
-- Install `helm install astrapost bitnami/postgresql -n postgresql01 --create-namespace`
-- Verify `kubectl get po -n postgresql01`
-- Verify `kubectl get po -A`
+* Install MariaDB in either of these ways.  '--create-namespace' flag can skip 'kubectl create ns xxxxx'
+
+```Bash
+kubectl create ns postgresql01
+helm install astramaria bitnami/postgresql -n postgresql01
+```
+
+or 
+
+```Bash
+helm install astrapost bitnami/postgresql -n postgresql01 --create-namespace
+```
+
+> **Verify** `kubectl get po -n postgresql01` or `kubectl get po -A`\
+> **Note** In case of uninstallation needed, use *helm uninstall*. `helm uninstall astrapost -n postgresql01`
 
 Note) In case of uninstallation, use *helm uninstall*. `helm uninstall astrapost -n postgresql01`
 
