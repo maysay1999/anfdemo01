@@ -26,8 +26,10 @@ git clone https://github.com/maysay1999/anfdemo01.git AnfDemo01
 
 ## 1. Create AKS cluster
 
-- Resource group: anftest-rg `az group create -n anftest-rg -l japaneast`
-- Cluster name: AnfCluster01
+* Resource group: anftest-rg
+* Cluster name: AnfCluster01
+* Node count: 3
+
 ```bash
 az aks create \
     -g anftest-rg \
@@ -41,44 +43,49 @@ az aks create \
 
 ## 2. Create ANF subnet and delegate the subnet for ANF (anf-create.sh)
 
-- Resource group for Nodes(VMs): MC_anftest-rg_AnfCluster01_japaneast
-- Vnet inside MC_anftest-rg_AnfCluster01_japaneast: aks-vnet-xxxxxxxx
-- ANF subnet: 10.0.0.0/26
+ANF account: anfac01
 
-## 3. Create ANF account, pool and volume (anf-create.sh)
+Pool named mypool1: 4TB, Standard
 
-- ANF account: anfac01
-- Pool named mypool1: 4TB, Standard
-- Volume named myvol1: 100GB, NGFSv3
-*Running as shell is easier.*
-*chmod 711 anf_demo_create_pool_volume.azcli*
-*./anf_demo_create_pool_volume.azcli*
+Volume named myvol1: 100GiB, NGFSv3
 
-## 4. Get access credentials for a managed Kubernetes cluster
+* Open anf-create.sh with `vi`, `vim` or `code`.
 
-`az aks get-credentials -n AnfCluster01 -g anftest-rg`
+![anf-create.sh](https://github.com/maysay1999/anfdemo01/blob/main/images/anf-create_shell.jpg)
 
-## 5. Configure CSI (csi-install.sh)
+```bash
+cd AnfDemo01/
+vim anf-create.sh
+```
 
-- Use this command to create a clone of this site locally `git clone https://github.com/maysay1999/anfdemo01.git AnfDemo01`
-- `cd ~/AnfDemo01/astra`
-- `chmod 711 csi-install.sh`
-- `./csi-install.sh`
-- ~~`kubectl apply -f snapshot.storage.k8s.io_volumesnapshotclasses.yaml`~~
-- ~~`kubectl apply -f snapshot.storage.k8s.io_volumesnapshotcontents.yaml`~~
-- ~~`kubectl apply -f snapshot.storage.k8s.io_volumesnapshots.yaml`~~
-- ~~`kubectl apply -f rbac-snapshot-controller.yaml`~~
-- ~~`kubectl apply -f setup-snapshot-controller.yaml`~~
+* Edit anf-create.sh.  aks-vnet-xxxxxxxx to be modified as your VNet name under Resource Group, *MC_anftest-rg_AnfCluster01_japaneast*
 
-## 6. Create Astra account
+![anf-create2.sh](https://github.com/maysay1999/anfdemo01/blob/main/images/anf-create_shell2.jpg)
 
-- Please refer to this video for procedure of Astra registration : [How to register Astra](https://nam06.safelinks.protection.outlook.com/?url=https%3A%2F%2Fnetapp-my.sharepoint.com%2F%3Av%3A%2Fp%2Flrico%2FEUE9QwNiNAJKo07M9xIW3eIBsnaqdOiVybF0R4RCknUmdA&data=04%7C01%7Cb-mtakemoto%40microsoft.com%7Cd4492be000004031ce0c08d9b9a7ed08%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C637744953221706976%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C3000&sdata=u8diaB6J0wqmQkP6X4Kr2x%2FX1HDiicl7mFeHQ%2FnRYDk%3D&reserved=0)
-1. [Register Cloud Central](https://cloud.netapp.com/)    Note) Right-click and open link in a new tab and click **SIGN UP** on right top
-2. Reply to verification email (Make sure of checking verification email in **Spam Folder**)
+* Run this shell
+
+```bash
+./anf-create.sh
+```
+
+## 3. Get access credentials for a managed Kubernetes cluster
+
+On [Cloud Shell](https://docs.microsoft.com/en-us/azure/cloud-shell/overview), execute [az aks get-credentials](https://docs.microsoft.com/en-us/cli/azure/aks?view=azure-cli-latest#az-aks-get-credentials) command for a managed Kubernetes cluster.
+
+```bash
+az aks get-credentials -n AnfCluster01 -g anftest-rg
+```
+
+## 4. Register a new Astra account
+
+* Please refer to this video for procedure of Astra registration : [How to register Astra](https://nam06.safelinks.protection.outlook.com/?url=https%3A%2F%2Fnetapp-my.sharepoint.com%2F%3Av%3A%2Fp%2Flrico%2FEUE9QwNiNAJKo07M9xIW3eIBsnaqdOiVybF0R4RCknUmdA&data=04%7C01%7Cb-mtakemoto%40microsoft.com%7Cd4492be000004031ce0c08d9b9a7ed08%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C637744953221706976%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C3000&sdata=u8diaB6J0wqmQkP6X4Kr2x%2FX1HDiicl7mFeHQ%2FnRYDk%3D&reserved=0)
+
+1. Right-click [Register Cloud Central site](https://cloud.netapp.com/) as "open link in a new tab "and click **SIGN UP** on right top corner
+2. Reply to verification request email (Usually he verificaiton request mail is stored in **Spam Folder**)
 3. **In a new tab**, go to [Register Astra account](https://cloud.netapp.com/astra) and click "Get Started with Astra Control"
 4. Fill out the form on **"fully-managed service FREE PLAN"**
 5. In a few seconds, send you to Astra User Interface
-6. On the next time, click [here](https://astra.netapp.io) to have access [https://astra.netapp.io](https://astra.netapp.io)
+6. On the next time, you can have access to [https://astra.netapp.io](https://astra.netapp.io) to have access to [Astra Control Service](https://astra.netapp.io)
 
 ## 7. Create Astra Service Principal
 
