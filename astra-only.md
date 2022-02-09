@@ -196,8 +196,4 @@ az storage container create  --name astrafastbucket \
     --account-key s4c6u21XzELk83cjN0pMpTsbJWP1XMv+kSbynitmENMMHDnjhYktIbwvCMJAZK1/W+F/z8fJjvbVyvlgnRFYFAKE
 ```
 
-## 16. Understand Define feature
-
-To be continued
-
 ---
