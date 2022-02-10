@@ -134,13 +134,13 @@ The latest Trident is avaialable [here](https://github.com/NetApp/trident/releas
 * Download Trident
 
 ```Bash
-curl -L -O -C - https://github.com/NetApp/trident/releases/download/v22.01.0/trident-installer-22.01.0.tar.gz`
+curl -L -O -C - https://github.com/NetApp/trident/releases/download/v22.01.0/trident-installer-22.01.0.tar.gz
 ```
 
 * Extract tar.gz file
 
 ```Bash
-tar xzvf trident-installer-22.01.0.tar.gz`
+tar xzvf trident-installer-22.01.0.tar.gz
 ```
 
 * Copy tridentctl to /usr/local/bin/ ($PATH directory)
