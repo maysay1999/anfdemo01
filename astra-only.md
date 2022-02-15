@@ -87,7 +87,7 @@ az aks get-credentials -n AnfCluster01 -g anftest-rg
 5. In a few seconds, send you to Astra User Interface
 6. On the next time, you can have access to [https://astra.netapp.io](https://astra.netapp.io) to have access to [Astra Control Service](https://astra.netapp.io)
 
-## 5. Create Service Principal
+## 5. Install a CSI volume snapshot controller
 
 ### 1. Install volume snapshot CRD
 
