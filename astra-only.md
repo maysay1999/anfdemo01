@@ -104,7 +104,7 @@ kubectl apply -f https://raw.githubusercontent.com/kubernetes-csi/external-snaps
 kubectl apply -f https://raw.githubusercontent.com/kubernetes-csi/external-snapshotter/v4.0.0/deploy/kubernetes/snapshot-controller/setup-snapshot-controller.yaml
 ```
 
-> **Note**  K8s version 1.20 or higher.  To view the version of k8s, `kubectl version`
+> **Note**  K8s version should be 1.20 or higher.  To view the version of k8s, `kubectl version`
 
 ## 6. Create Service Principal
 
