@@ -89,6 +89,25 @@ az aks get-credentials -n AnfCluster01 -g anftest-rg
 
 ## 5. Create Service Principal
 
+### 1. Install volume snapshot CRD
+
+```Bash
+kubectl apply -f https://raw.githubusercontent.com/kubernetes-csi/external-snapshotter/v4.0.0/client/config/crd/snapshot.storage.k8s.io_volumesnapshotclasses.yaml
+kubectl apply -f https://raw.githubusercontent.com/kubernetes-csi/external-snapshotter/v4.0.0/client/config/crd/snapshot.storage.k8s.io_volumesnapshotcontents.yaml
+kubectl apply -f https://raw.githubusercontent.com/kubernetes-csi/external-snapshotter/v4.0.0/client/config/crd/snapshot.storage.k8s.io_volumesnapshots.yaml
+```
+
+### 2. Create the snapshot controller
+
+```Bash
+kubectl apply -f https://raw.githubusercontent.com/kubernetes-csi/external-snapshotter/v4.0.0/deploy/kubernetes/snapshot-controller/rbac-snapshot-controller.yaml
+kubectl apply -f https://raw.githubusercontent.com/kubernetes-csi/external-snapshotter/v4.0.0/deploy/kubernetes/snapshot-controller/setup-snapshot-controller.yaml
+```
+
+> **Note**  K8s version 1.20 or higher.  To view the version of k8s, `kubectl version`
+
+## 6. Create Service Principal
+
 * Creaete a new SP named "http://sp-astra-service-principalxxx".  Output such as AppID and Password shall be written on notepad.  
 
 ```Bash
@@ -99,7 +118,7 @@ az ad sp create-for-rbac --name "http://sp-astra-service-principalxxx" \
 
 > **Note**  'az ad sp list --display-name "http://sp-astra-service-principal" -o table' command shows you the SP created.  
 
-## 6. Ensure that ANF is set as default storage service
+## 7. Ensure that ANF is set as default storage service
 
 * Set ANF Standard as default StorageClass (CLI)
 
@@ -117,7 +136,7 @@ On Astra --> Clusters --> Storage --> Storage Class --> Choose "netapp-anf-perf-
 
 > **Note**   Ensure that ANF is set default of StorageClass with `kubectl get sc` command
 
-## 7. Install Helm Chart Bitnami Repository
+## 8. Install Helm Chart Bitnami Repository
 
 Install Helm Chart Bitnami repository
 
@@ -131,7 +150,7 @@ You can find the names of the charts in repositories you have already added.  In
 helm search repo bitnami
 ```
 
-## 8. Install MariaDB
+## 9. Install MariaDB
 
 * Install MariaDB in either of these ways.  '--create-namespace' flag can skip the process of creating a new namespace
 
@@ -149,7 +168,7 @@ helm install astramaria bitnami/mariadb -n maria01 --create-namespace
 > **Verify** `kubectl get po -n maria01` or `kubectl get po -A`\
 > **Note** In case of uninstallation needed, use *helm uninstall*. `helm uninstall astramaria -n maria01`
 
-## 9. Install PostgreSQL
+## 10. Install PostgreSQL
 
 * Install PostgreSQL in either of these ways.  '--create-namespace' flag can skip the process of creating a new namespace
 
@@ -169,7 +188,7 @@ helm install astrapost bitnami/postgresql -n postgresql01 --create-namespace
 
 Note) In case of uninstallation, use *helm uninstall*. `helm uninstall astrapost -n postgresql01`
 
-## 10. Backup maria01 and restore from Astra Backup
+## 11. Backup maria01 and restore from Astra Backup
 
 1. Backup the maria01 to default Backet
 
@@ -181,7 +200,7 @@ Note) In case of uninstallation, use *helm uninstall*. `helm uninstall astrapost
    * View restoration status
      `kubectl get po -A -w`
 
-## 15. Create one more Bucket for Disaster Recovery (**undercooked**)
+## 12. Create one more Bucket for Disaster Recovery (**undercooked**)
 
 ```bash
 az storage account create \
