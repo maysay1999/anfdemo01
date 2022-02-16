@@ -212,7 +212,7 @@ az storage account create \
 az storage account keys list  --resource-group astra-backup-rg  --account-name astrabuckets002
 az storage container create  --name astrafastbucket \
     --account-name astrabuckets002 \
-    --account-key s4c6u21XzELk83cjN0pMpTsbJWP1XMv+kSbynitmENMMHDnjhYktIbwvCMJAZK1/W+F/z8fJjvbVyvlgnRFYFAKE
+    --account-key 
 ```
 
 ---
