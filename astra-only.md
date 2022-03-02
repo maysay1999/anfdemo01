@@ -91,7 +91,7 @@ az aks get-credentials -n AnfCluster01 -g anftest-rg
 
 ### 1. Install volume snapshot CRD
 
-```Bash
+```kubectl
 kubectl apply -f https://raw.githubusercontent.com/kubernetes-csi/external-snapshotter/v4.0.0/client/config/crd/snapshot.storage.k8s.io_volumesnapshotclasses.yaml
 kubectl apply -f https://raw.githubusercontent.com/kubernetes-csi/external-snapshotter/v4.0.0/client/config/crd/snapshot.storage.k8s.io_volumesnapshotcontents.yaml
 kubectl apply -f https://raw.githubusercontent.com/kubernetes-csi/external-snapshotter/v4.0.0/client/config/crd/snapshot.storage.k8s.io_volumesnapshots.yaml
@@ -99,7 +99,7 @@ kubectl apply -f https://raw.githubusercontent.com/kubernetes-csi/external-snaps
 
 ### 2. Create the snapshot controller
 
-```Bash
+```kubectl
 kubectl apply -f https://raw.githubusercontent.com/kubernetes-csi/external-snapshotter/v4.0.0/deploy/kubernetes/snapshot-controller/rbac-snapshot-controller.yaml
 kubectl apply -f https://raw.githubusercontent.com/kubernetes-csi/external-snapshotter/v4.0.0/deploy/kubernetes/snapshot-controller/setup-snapshot-controller.yaml
 ```
@@ -110,10 +110,10 @@ kubectl apply -f https://raw.githubusercontent.com/kubernetes-csi/external-snaps
 
 * Creaete a new SP named "http://sp-astra-service-principalxxx".  Output such as AppID and Password shall be written on notepad.  
 
-```Bash
+```kubectl
 az ad sp create-for-rbac --name "http://sp-astra-service-principalxxx" \
   --role contributor \
-  --scopes /subscriptions/{your_SUBSCRIPTION_ID}
+  --scopes /subscriptions/$(az account show --query id --output tsv)
 ```
 
 > **Note**  'az ad sp list --display-name "http://sp-astra-service-principal" -o table' command shows you the SP created.  
@@ -124,7 +124,7 @@ az ad sp create-for-rbac --name "http://sp-astra-service-principalxxx" \
 
 CLI
 
-```Bash
+```kubectl
 kubectl patch storageclass netapp-anf-perf-standard -p '{"metadata": {"annotations":{"storageclass.kubernetes.io/is-default-class":"true"}}}'`
 ```
 
@@ -140,13 +140,13 @@ On Astra --> Clusters --> Storage --> Storage Class --> Choose "netapp-anf-perf-
 
 Install Helm Chart Bitnami repository
 
-```Bash
+```helm
 helm repo add bitnami https://charts.bitnami.com/bitnami
 ```
 
 You can find the names of the charts in repositories you have already added.  Installation of MariaDB, PostgreSQL and WordPress is ready.  
 
-```Bash
+```helm
 helm search repo bitnami
 ```
 
@@ -154,14 +154,14 @@ helm search repo bitnami
 
 * Install MariaDB in either of these ways.  '--create-namespace' flag can skip the process of creating a new namespace
 
-```Bash
+```kubectl
 kubectl create ns maria01
 helm install astramaria bitnami/mariadb -n maria01
 ```
 
 or
 
-```Bash
+```helm
 helm install astramaria bitnami/mariadb -n maria01 --create-namespace
 ```
 
@@ -172,14 +172,14 @@ helm install astramaria bitnami/mariadb -n maria01 --create-namespace
 
 * Install PostgreSQL in either of these ways.  '--create-namespace' flag can skip the process of creating a new namespace
 
-```Bash
+```kubectl
 kubectl create ns postgresql01
 helm install astramaria bitnami/postgresql -n postgresql01
 ```
 
 or
 
-```Bash
+```helm
 helm install astrapost bitnami/postgresql -n postgresql01 --create-namespace
 ```
 
