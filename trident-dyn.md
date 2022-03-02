@@ -122,7 +122,7 @@ Kubernetes service --> AnfCluster01 and click "Connect".  And copy and paste two
 
 ![Connect to AKS](https://github.com/maysay1999/anfdemo01/blob/main/images/connect_to_aks.jpg)
 
-```Bash
+```bash
 az account set -s {your_subscriptionID}
 az aks get-credentials --resource-group anftest-rg --name AnfCluster01
 ```
@@ -133,39 +133,39 @@ The latest Trident is avaialable [here](https://github.com/NetApp/trident/releas
 
 * Download Trident
 
-```Bash
+```bash
 curl -L -O -C - https://github.com/NetApp/trident/releases/download/v22.01.0/trident-installer-22.01.0.tar.gz
 ```
 
 * Extract tar.gz file
 
-```Bash
+```bash
 tar xzvf trident-installer-22.01.0.tar.gz
 ```
 
 * Copy tridentctl to /usr/local/bin/ ($PATH directory)
 
-```Bash
+```bash
 cd trident-installer
 sudo cp tridentctl /usr/local/bin/
 ```
 
 * Create a new namespace, trident
 
-```Bash
+```bash
 kubectl create ns trident
 ```
 
 * Install trident with helm
 
-```Bash
+```bash
 cd helm
 helm install trident trident-operator-22.01.0.tgz -n trident
 ```
 
 * Verify trident oprator and CSI pods are running in *trident* namespace
 
-```Bash
+```bash
 kubectl get po -A
 ```
 
@@ -173,8 +173,11 @@ kubectl get po -A
 
 * Edit `.bashrc`.  Add a new alias, `alias k=kubectl`
 
-```Bash
+```bash
 vim ~/.bashrc
+```
+
+```bash
 source ~/.bashrc
 ```
 
@@ -195,6 +198,8 @@ az ad sp create-for-rbac --name "http://netapptridentxxx" \
 * Edit `backend-azure-anf-advanced.json` file under AnfDemo01 directory. The values of "subscriptionID", "tenantID", "clientID", "clientSecret" and "virtualNetwork" shall be changed
 
 ```Bash
+cd ~/
+git clone https://github.com/maysay1999/anfdemo01.git AnfDemo01
 vim ~/AnfDemo01/backend-azure-anf-advanced.json
 ```
 
