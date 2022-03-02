@@ -190,7 +190,7 @@ source ~/.bashrc
 ```Bash
 az ad sp create-for-rbac --name "http://netapptridentxxx" \
   --role contributor \
-  --scopes /subscriptions/{your_SUBSCRIPTION_ID}
+  --scopes /subscriptions/$(az account show --query id --output tsv)
 ```
 
 ## 10. Modify backend-azure-anf-advanced.json as preparation to create Tridnet Backend
