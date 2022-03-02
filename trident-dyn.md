@@ -209,8 +209,8 @@ vim ~/AnfDemo01/backend-azure-anf-advanced.json
 
 * Using [tridentctl command](https://netapp-trident.readthedocs.io/en/stable-v18.07/reference/tridentctl.html), create Trident Backend
 
-```bash
-tridentctl create backend -f backend-azure-anf-advanced.json -n trident
+```tridentctl
+tridentctl create backend -f ~/AnfDemo01/backend-azure-anf-advanced.json -n trident
 ```
 
 > **Note** Please refer to [this site](https://netapp-trident.readthedocs.io/en/stable-v18.07/reference/tridentctl.html) for tridentctl command.
