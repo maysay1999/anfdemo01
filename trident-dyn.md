@@ -187,7 +187,7 @@ source ~/.bashrc
 
 * Creaete a new SP named "http://netapptridentxxx".  Output such as AppID and Password shall be written on notepad.  
 
-```Bash
+```bash
 az ad sp create-for-rbac --name "http://netapptridentxxx" \
   --role contributor \
   --scopes /subscriptions/$(az account show --query id --output tsv)
@@ -197,7 +197,7 @@ az ad sp create-for-rbac --name "http://netapptridentxxx" \
 
 * Edit `backend-azure-anf-advanced.json` file under AnfDemo01 directory. The values of "subscriptionID", "tenantID", "clientID", "clientSecret" and "virtualNetwork" shall be changed
 
-```Bash
+```bash
 cd ~/
 git clone https://github.com/maysay1999/anfdemo01.git AnfDemo01
 vim ~/AnfDemo01/backend-azure-anf-advanced.json
@@ -209,7 +209,7 @@ vim ~/AnfDemo01/backend-azure-anf-advanced.json
 
 * Using [tridentctl command](https://netapp-trident.readthedocs.io/en/stable-v18.07/reference/tridentctl.html), create Trident Backend
 
-```Bash
+```bash
 tridentctl create backend -f backend-azure-anf-advanced.json -n trident
 ```
 
@@ -221,7 +221,7 @@ SC name: azure-netapp-files
 
 FS type: NFS
 
-```Bash
+```kubectl
 cd ~/AnfDemo01
 kubectl apply -f anf-storageclass.yaml
 ```
@@ -236,7 +236,7 @@ SC name: azure-netapp-files
 
 Storage 100MiB, RWX
 
-```Bash
+```kubectl
 kubectl apply -f anf-pvc.yaml
 ```
 
@@ -250,7 +250,7 @@ CPU: 100m, Mem:  128Mi
 
 Mount path: /mnt/data
 
-```Bash
+```kubectl
 kubectl apply -f anf-nginx-pod.yaml
 ```
 
@@ -260,19 +260,19 @@ kubectl apply -f anf-nginx-pod.yaml
 
 * Have access with pod
 
-```Bash
+```kubectl
 kubectl exec -it nginx-pod -- /bin/bash
 ```
 
 * View mount status
 
-```Bash
+```bash
 df -h
 ```
 
 * Install wget
 
-```Bash
+```bash
 cd /mnt/data/
 apt update
 apt install -y wget
@@ -281,7 +281,7 @@ wget https://releases.hashicorp.com/terraform/1.1.5/terraform_1.1.5_windows_amd6
 
 * Change to /mnt/data and create two files
 
-```Bash
+```bash
 cd /mnt/data/
 echo "Azure is awesome" > test.txt
 dd if=/dev/zero of=5m.dat bs=1024 count=5120
