@@ -65,7 +65,7 @@ az aks create \
     -l japaneast \
     --node-count 3 \
     --generate-ssh-keys \
-    --node-vm-size Standard_B2s \
+    --node-vm-size Standard_D2s_v4 \
     --enable-managed-identity
 ```
 
