@@ -7,13 +7,12 @@ az network vnet subnet create \
     --vnet-name $MCVNET \
     --name netapp-subnet \
     --delegations "Microsoft.NetApp/volumes" \
-    --address-prefixes 10.0.0.0/26
+    --address-prefixes 10.225.0.0/26
 
 # create anf account
 az netappfiles account create \
     -g $MCRG \
-    --name anfac01 -l japaneast \
-    --tags owner=anfdemo location="office A"
+    --name anfac01 -l japaneast 
 
 # create a pool
 az netappfiles pool create \
