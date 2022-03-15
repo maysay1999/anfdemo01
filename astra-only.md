@@ -31,6 +31,10 @@ git clone https://github.com/maysay1999/anfdemo01.git AnfDemo01
 * Node count: 3
 
 ```bash
+az group create -n anftest-rg -l japaneast
+```
+
+```bash
 az aks create \
     -g anftest-rg \
     -n AnfCluster01 \
