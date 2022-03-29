@@ -24,17 +24,17 @@ az netappfiles pool create \
     --service-level Standard
 
 # create a volume
-az netappfiles volume create \
-    --resource-group $MCRG \
-    --location japaneast \
-    --account-name anfac01 \
-    --pool-name mypool1 \
-    --name myvol1 \
-    --service-level Standard \
-    --vnet $MCVNET \
-    --subnet netapp-subnet \
-    --allowed-clients 0.0.0.0/0 \
-    --rule-index 1 \
-    --usage-threshold 100 \
-    --file-path nfspath01 \
-    --protocol-types NFSv3
+# az netappfiles volume create \
+#     --resource-group $MCRG \
+#     --location japaneast \
+#     --account-name anfac01 \
+#     --pool-name mypool1 \
+#     --name myvol1 \
+#     --service-level Standard \
+#     --vnet $MCVNET \
+#     --subnet netapp-subnet \
+#     --allowed-clients 0.0.0.0/0 \
+#     --rule-index 1 \
+#     --usage-threshold 100 \
+#     --file-path nfspath01 \
+#     --protocol-types NFSv3
