@@ -34,7 +34,7 @@ Dynamic volume provisioning allows storage volumes to be created on-demand. With
 
 ## 1. Create Ubuntu VM for Trident
 
-*1.* Create a new resource group namaed `anftest-rg`  
+* Create a new resource group namaed `anftest-rg`  
 
   ```bash
   az group create -n anftest-rg -l japaneast
