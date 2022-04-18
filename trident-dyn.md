@@ -32,27 +32,30 @@ Dynamic volume provisioning allows storage volumes to be created on-demand. With
 * **kubectl get po --all-namespaces** *List all pods in all namespaces*
 * **kubectl get po -A** *List all pods in all namespaces*
 
-### The source code will be executed in this recipe is available here
-
-```bash
-git clone https://github.com/maysay1999/anfdemo01.git AnfDemo01
-```
-
 ## 1. Create Ubuntu VM for Trident
 
-* Create a new resource group:
+*1.* Create a new resource group namaed `anftest-rg`  
 
-```bash
-az group create -n anftest-rg -l japaneast
-```
+  ```bash
+  az group create -n anftest-rg -l japaneast
+  ```
 
-* Create Ubuntu VM [ARM for Ubuntu](https://github.com/maysay1999/anfdemo01/tree/main/trident) (right-click on this link).  After deploying Ubuntu VM, remotely log in via public IP address with your favorite SSH Agent software, [Windows Terminal](https://docs.microsoft.com/en-us/windows/terminal/install), [WSL](https://docs.microsoft.com/en-us/windows/wsl/install) or [Tera Term](https://osdn.net/projects/ttssh2/releases/).
+* Download configuration files from Github  
 
-```Bash
-ssh {your_public_ip_address} -l aksadmin
-```
+  ```bash
+  git clone https://github.com/maysay1999/anfdemo01.git AnfAks01
+  ```
 
-## 2. Create AKS cluster
+## 2. Create Ubuntu jump host
+
+* Setup process
+  1. Open jumphost-create.sh  
+    `vim AnfAks01/jumphost-create.sh`  
+  2. Add the password on end of file (min. 12 letters and numbers)
+  3. Execute jumphost-create.sh  
+    `AnfAks01/jumphost-create.sh`  
+
+## 3. Create AKS cluster
 
 * Resource group: anftest-rg
 * Cluster name: AnfCluster01
@@ -69,7 +72,7 @@ az aks create \
     --enable-managed-identity
 ```
 
-## 3. Create ANF account, pool and volume (anf-create.sh)
+## 4. Create ANF account, pool and volume (anf-create.sh)
 
 ANF account: anfac01
 
@@ -96,7 +99,7 @@ vim anf-create.sh
 ./anf-create.sh
 ```
 
-## 4. Install kubectl, helm, az cli and git
+## 5. Install kubectl, helm, az cli and git
 
 * Install kubectl, helm, az cli and git on Ubuntu Jump Host
 
@@ -108,7 +111,7 @@ curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash && \
 sudo apt install git-all -y
 ```
 
-## 5. az login to Azure on Trident VM
+## 6. az login to Azure on Trident VM
 
 ```bash
 az login --tenant {your_tenant_name}
@@ -116,7 +119,7 @@ az login --tenant {your_tenant_name}
 
 > **Note**: In most of the cases, *'--tenant'* can be omitted.  Tenant name can be viiew with `az account show`.  
 
-## 6. Connect AKS cluster to Trident VM
+## 7. Connect AKS cluster to Trident VM
 
 Kubernetes service --> AnfCluster01 and click "Connect".  And copy and paste two command lines line by line on Ubuntu jump host.
 
@@ -127,7 +130,7 @@ az account set -s {your_subscriptionID}
 az aks get-credentials --resource-group anftest-rg --name AnfCluster01
 ```
 
-## 7. Install Trident
+## 8. Install Trident
 
 The latest Trident is avaialable [here](https://github.com/NetApp/trident/releases).
 
@@ -169,7 +172,7 @@ helm install trident trident-operator-22.01.0.tgz -n trident
 kubectl get po -A
 ```
 
-## 8. Create an alias, k=kubectl
+## 9. Create an alias, k=kubectl
 
 * Edit `.bashrc`.  Add a new alias, `alias k=kubectl`
 
@@ -183,7 +186,7 @@ source ~/.bashrc
 
 ![add alias](https://github.com/maysay1999/anfdemo01/blob/main/images/alias.jpg)
 
-## 9. Create Service Principal
+## 10. Create Service Principal
 
 * Creaete a new SP named "http://netapptridentxxx".  Output such as AppID and Password shall be written on notepad.  
 
@@ -193,7 +196,7 @@ az ad sp create-for-rbac --name "http://netapptridentxxx" \
   --scopes /subscriptions/$(az account show --query id --output tsv)
 ```
 
-## 10. Modify backend-azure-anf-advanced.json as preparation to create Tridnet Backend
+## 11. Modify backend-azure-anf-advanced.json as preparation to create Tridnet Backend
 
 * Edit `backend-azure-anf-advanced.json` file under AnfDemo01 directory. The values of "subscriptionID", "tenantID", "clientID", "clientSecret" and "virtualNetwork" shall be changed
 
@@ -205,7 +208,7 @@ vim ~/AnfDemo01/backend-azure-anf-advanced.json
 
 ![json file to create Tridnet Backend](https://github.com/maysay1999/anfdemo01/blob/main/images/json-backend.jpg)
 
-## 11. Create backend with tridentctl
+## 12. Create backend with tridentctl
 
 * Using [tridentctl command](https://netapp-trident.readthedocs.io/en/stable-v18.07/reference/tridentctl.html), create Trident Backend
 
@@ -215,7 +218,7 @@ tridentctl create backend -f ~/AnfDemo01/backend-azure-anf-advanced.json -n trid
 
 > **Note** Please refer to [this site](https://netapp-trident.readthedocs.io/en/stable-v18.07/reference/tridentctl.html) for tridentctl command.
 
-## 12. Create StorageClass (anf-storageclass.yaml)
+## 13. Create StorageClass (anf-storageclass.yaml)
 
 SC name: azure-netapp-files
 
@@ -228,7 +231,7 @@ kubectl apply -f anf-storageclass.yaml
 
 > **Verify** `k get sc`
 
-## 13. Create PVC (anf-pvc.yaml)
+## 14. Create PVC (anf-pvc.yaml)
 
 Name: anf-pvc
 
@@ -242,7 +245,7 @@ kubectl apply -f anf-pvc.yaml
 
 > **Verify**  k get pvc
 
-## 14. Create a pod (anf-nginx-pod.yaml)
+## 15. Create a pod (anf-nginx-pod.yaml)
 
 Pod image: NGINX
 
@@ -256,7 +259,7 @@ kubectl apply -f anf-nginx-pod.yaml
 
 > **Verify**  k get po
 
-## 15. Have access to the pods to view mounted status and Snapshot
+## 16. Have access to the pods to view mounted status and Snapshot
 
 * Have access with pod
 
